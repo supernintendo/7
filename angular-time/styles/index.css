@@ -1,0 +1,141 @@
+/* Fonts! ...pretty, pretty fonts. */
+@font-face {
+    font-family: 'Cubefont';
+    src: url(modular.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Kurzwaren';
+    src: url(KURZRG__.TTF) format('truetype');
+}
+.cubefont { font-family: Cubefont, sans-serif; }
+.kurzwaren { font-family: Kurzwaren, sans-serif; }
+
+/* Show and hide labels based on viewport width */
+@media screen and (max-width: 450px) {
+    .task-labels {
+        display: none;
+    }
+}
+@media screen and (max-width: 540px) {
+    .list-group-item input {
+        width: 9rem;
+    }
+}
+@media screen and (min-width: 540px) {
+    .list-group-item input {
+        width: 18rem;
+    }
+}
+
+/* Important page elements */
+body {
+    background-color: #ECF1F2;
+    font-family: 'Crimson Text', serif;
+    font-size: 1.75rem;
+}
+button { background-color: #CBDBE0; }
+.header {
+    background-color: #CBDBE0;
+    color: #000000;
+}
+.logo {
+    font-size: 6rem;
+    text-align: center;
+}
+.footer {
+    background-color: #ECF1F2;
+    text-align: center;
+}
+input.menu-input {
+    margin-bottom: .8rem;
+    width: 12rem;
+}
+
+/* List controls */
+.add-task-button { display: inline-block; }
+.edit-task-button:focus { color: #CBDBE0 }
+.edit-task-button:hover { color: #ECF1F2 }
+.edit-task-dropdown-options {
+    left: auto;
+    right: 0;
+    width: 25rem;
+}
+.edit-task-dropdown-options span.label-active {
+    cursor: pointer;
+    opacity: .85;
+}
+.edit-task-dropdown-options span.label-active:hover { opacity: 1; }
+.edit-task-dropdown-options span.label-inactive {
+    cursor: pointer;
+    opacity: .5;
+}
+.edit-task-dropdown-options span.label-inactive:hover { opacity: .75; }
+.edit-task-dropdown-options ul {
+    text-align: right;
+    padding-right: 0.8rem;
+}
+.main-controls > input {
+    display: inline-block;
+    width: 24rem;
+}
+.list-filters { display: inline-block; }
+.list-filters > input {
+    display: inline-block;
+    width: 24rem;
+}
+.list-group-item button { opacity: .78; }
+.list-group-item button:hover { opacity: 1; }
+.list-group-item label { cursor: pointer; display: inline; }
+.list-group-item input[type="checkbox"] {
+    height: auto;
+    width: auto;
+}
+.list-group-item .col-sm-8 { margin-bottom: 1.66rem; }
+.main-controls {
+    padding-bottom: 1.5rem;
+    text-align: center;
+}
+.task-controls { float: right; }
+.task-controls button { font-size: 1.35rem; }
+.task-timer { display: inline-block; }
+.task-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 50%;
+}
+.task-name-input {
+    display: inline-block;
+    height: 25px;
+}
+
+/* Labels */
+.label-violet, .label-blue, .label-green, .label-yellow, .label-red {
+    display: inline-block;
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+}
+.label-beer { display: inline-block; }
+.label-beer:before { content: "🍺"; }
+.label-money:before { content: "$"; }
+.label-money {
+    background-color: #ECF1F2;
+    display: inline-block;
+    border-radius: 0px;
+    height: 18px;
+    width: 18px;
+    line-height: 90%;
+    text-align: center;
+}
+.label-violet { background-color: #482344; }
+.label-blue { background-color: #2B5166; }
+.label-green { background-color: #429867; }
+.label-yellow { background-color: #FAB243; }
+.label-red { background-color: #E02130; }
+.task-labels {
+    float: right;
+    line-height: 3rem;
+    padding-right: 1rem;
+}
