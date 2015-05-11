@@ -1,0 +1,68 @@
+/* some style */
+
+html, body {
+    background-color: black;
+    margin-top: 16px;
+    min-width: 440px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#game-grid {
+    display: inline-block;
+}
+
+.game-overlay {
+    position: fixed;
+}
+
+.entity {
+    height: 100%;
+    width: 100%;
+}
+
+.entity > div {
+    position: relative;
+}
+
+.entity #Player {
+    background-color: blue;
+    width: 18px;
+    height: 18px;
+}
+
+.entity .projectile {
+    background-color: red;
+    width: 4px;
+    height: 4px;
+}
+
+.row {
+    line-height: 0px;
+}
+
+.row > div {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+.wall {
+    background-color: #403C37;
+}
+
+.floor {
+    background-color: #1C140D;
+}
+
+.void {}
