@@ -56,3 +56,5 @@
 
                          (entity/update-entity entity-id :x (+ x x-speed))
                          (entity/update-entity entity-id :y (+ y y-speed)))))
+
+(def projectile-collides (fn [] (print "collides")))

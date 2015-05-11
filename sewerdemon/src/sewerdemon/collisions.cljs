@@ -3,11 +3,12 @@
 
 (defn detect-collisions []
   (doseq [entity (:entities @state/entities)]
-    (print (some
+    (if (some
             #(and
               (not= (:id entity) (:id %))
               (>= (:x entity) (:x %))
               (>= (:y entity) (:y %))
               (<= (+ (:x entity) (.-width (:size entity))) (+ (:x %) (.-width (:size %))))
               (<= (+ (:y entity) (.-height (:size entity))) (+ (:y %) (.-width (:size %))))
-              ) (:entities @state/entities)))))
+              ) (:entities @state/entities))
+      ((get-in entity [:behaviors :collides])))))

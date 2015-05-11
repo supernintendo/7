@@ -9,6 +9,7 @@
     {
      :behaviors
      {
+      :collides nil
       :tick #'behaviors/player-tick
       }
      :name "Player"
@@ -21,6 +22,7 @@
     {
      :behaviors
      {
+      :collides #'behaviors/projectile-collides
       :tick #'behaviors/projectile-tick
       }
      :className "projectile"
