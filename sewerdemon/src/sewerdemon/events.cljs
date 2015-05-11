@@ -1,4 +1,4 @@
-(ns sewerdemon.events
+(ns ^:figwheel-always sewerdemon.events
   (:require [goog.dom :as dom]
             [goog.events :as events]
             [goog.style :as style]))
@@ -51,4 +51,9 @@
 (defn capture-key-events []
   (let [w (dom/getWindow)]
     (events/listen w (.-KEYUP events/EventType) capture-key-event)
-    (events/listen w (.-KEYDOWN events/EventType) capture-key-event)))
+    (events/listen w (.-KEYDOWN events/EventType) capture-key-event)
+    (events/listen w (.-FOCUS events/EventType) disable-key-events)))
+
+(defn disable-key-events []
+  (doseq [key (into [] (range 221))]
+    (set-key-state (get-key-from-charcode key) false)))
