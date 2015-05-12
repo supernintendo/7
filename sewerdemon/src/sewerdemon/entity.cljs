@@ -17,6 +17,13 @@
             (assoc entity :id id)))
     (tick/add-event behavior id)))
 
+(defn get-entity [entity-id]
+  (if-let
+      [matches (filter
+                (fn [entity] (= entity-id (:id entity)))
+                (:entities @state/entities))]
+    (first matches)))
+
 (defn get-from-entity [entity-id key]
   (if-let
       [matches (filter
@@ -37,7 +44,10 @@
 ;; Helper functions
 
 (defn css-transform-string-chunk [acc key value]
-  (str acc (name key) "(" value "px) "))
+  (if (= key :scaleX)
+    (str acc (name key) "(" (* value -1) ") ")
+    (str acc (name key) "(" value "px) ")
+    ))
 
 (defn css-transform-string [properties]
   (reduce-kv css-transform-string-chunk "" properties))
@@ -60,8 +70,12 @@
       (set! (.-transform (.-style (om/get-node owner)))
             (css-transform-string
              {:translateX (:x entity)
-              :translateY (:y entity)}
-             )))))
+              :translateY (:y entity)
+              :scaleX (:direction entity)
+              }))
+      (set! (.-invulnerable (.-dataset (om/get-node owner))) (:invulnerable entity))
+      (set! (.-walking (.-dataset (om/get-node owner))) (:walking entity))
+      )))
 
 ;; Om
 

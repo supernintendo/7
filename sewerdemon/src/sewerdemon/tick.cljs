@@ -6,12 +6,12 @@
    {:changed false
     :events []}))
 
-(defn add-event [func entity-id]
+(defn add-event [func ref-id]
   (swap! tick-events assoc :events
          (conj (:events @tick-events)
                {
                 :callback func
-                :entity-id entity-id
+                :ref-id ref-id
                 :id (uuid/make-random-uuid)
                 })))
 
@@ -22,8 +22,8 @@
   (let [events (:events @tick-events)]
     (dotimes [i (count events)]
       (if (contains? (nth events i) :callback)
-        (if (contains? (nth events i) :entity-id)
-          ((:callback (nth events i)) (:entity-id (nth events i)))
+        (if (contains? (nth events i) :ref-id)
+          ((:callback (nth events i)) (:ref-id (nth events i)))
           ((:callback (nth events i)))
           )
         nil)))

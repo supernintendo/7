@@ -1,4 +1,4 @@
-/* some style */
+/* Essentials */
 
 html, body {
     background-color: black;
@@ -8,33 +8,14 @@ html, body {
     text-align: center;
 }
 
-#game-grid {
-    display: inline-block;
-}
-
 .game-overlay {
     position: fixed;
 }
 
-.entity {
-    height: 100%;
-    width: 100%;
-}
+/* Grid and tiles */
 
-.entity > div {
-    position: relative;
-}
-
-.entity #Player {
-    background-color: blue;
-    width: 18px;
-    height: 18px;
-}
-
-.entity .projectile {
-    background-color: red;
-    width: 4px;
-    height: 4px;
+#game-grid {
+    display: inline-block;
 }
 
 .row {
@@ -58,11 +39,57 @@ html, body {
 }
 
 .wall {
-    background-color: #403C37;
+    background-image: url("../images/wall.png");
 }
 
 .floor {
-    background-color: #1C140D;
+    background-image: url("../images/floor.png");
 }
 
 .void {}
+
+/* Entities */
+
+.entity {
+    height: 100%;
+    width: 100%;
+}
+
+.entity > div {
+    position: relative;
+}
+
+.entity #Player {
+    background-image: url("../images/human.png");
+    width: 26px;
+    height: 30px;
+}
+
+.entity #Player[data-walking="true"] {
+    background-image: url("../images/human-walking.gif");
+}
+
+.entity .projectile {
+    background-color: red;
+    width: 4px;
+    height: 4px;
+}
+
+.entity > [data-invulnerable="true"] {
+    animation: blink 0.1s steps(5, start) infinite;
+    -webkit-animation: blink 0.1s steps(5, start) infinite;
+}
+
+/* Animations */
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
