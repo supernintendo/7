@@ -1,5 +1,8 @@
+/// <reference path="../references.ts"/>
+
 module Component {
     export interface Params {
+        attributes: any;
         source: string;
         target: string;
     }
@@ -12,17 +15,25 @@ module Component {
             this.target = <HTMLScriptElement>document.querySelector(params.target);
             this.render();
         }
-        render() {
-            var container: Element;
-            var subComponents: Element;
+        fillTemplates(container: Element) {
+            var templates: Element = container.querySelector('[data-template]');
 
-            this.target.innerHTML = this.source.outerHTML;
-            container = <HTMLScriptElement>this.target.children[0];
-            subComponents = container.querySelector('[data-component]');
+            console.log(templates);
+        }
+        removeSubComponents(container: Element) {
+            var subComponents: Element = container.querySelector('[data-component]');
 
             if (subComponents) {
                 subComponents.remove();
             }
+        }
+        render() {
+            var container: Element;
+
+            this.target.innerHTML = this.source.outerHTML;
+            container = <HTMLScriptElement>this.target.children[0];
+            this.removeSubComponents(container);
+            this.fillTemplates(container);
             container.classList.remove('hide');
         }
     }

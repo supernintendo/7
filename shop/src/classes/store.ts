@@ -1,9 +1,10 @@
-/// <reference path="./component.ts"/>
+/// <reference path="../references.ts"/>
 
 module Store {
-    export class ProductList extends Component.View {
+    export class ProductCategory extends Component.View {
         constructor(target: string) {
             var params: Component.Params = {
+                attributes: null,
                 source: "[data-component='product-list']",
                 target: target
             }
@@ -13,6 +14,7 @@ module Store {
     export class ShoppingCart extends Component.View {
         constructor(target: string) {
             var params: Component.Params = {
+                attributes: null,
                 source: "[data-component='shopping-cart']",
                 target: target
             }
