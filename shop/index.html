@@ -14,9 +14,9 @@
             <h2>Heading</h2>
             <button>View Cart</button>
         </div>
-        <div class="container" data-component="product-list">
-            <h2>Lorem Ipsum</h2>
-            <div class="row product-list-row" data-component="product-list-row">
+        <div class="container hide" data-component="product-list">
+            <h2 data-template="category-title">Category Title</h2>
+            <div class="hide row product-list-row" data-component="product-list-row">
                 <div class="one-third column product">
                     <h4>Item Title</h4>
                     <img class="u-max-full-width"></img>
@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="container" data-component="shopping-cart">
+        <div class="container hide" data-component="shopping-cart">
             <h2>Cart</h2>
             <table class="u-full-width">
                 <thead>
@@ -43,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-component="shopping-cart-item">
+                    <tr data-component="hide shopping-cart-item">
                         <td>Lorem ipsum</td>
                         <td>
                             <input class="quantity-input" type="number">

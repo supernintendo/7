@@ -13,7 +13,14 @@ module Component {
             this.render();
         }
         render() {
-            this.target.innerHTML = this.source.innerHTML;
+            var container: Element;
+            var subComponents: Element;
+
+            this.target.innerHTML = this.source.outerHTML;
+            container = <HTMLScriptElement>this.target.children[0];
+            subComponents = container.querySelector('[data-component]');
+            subComponents.remove();
+            container.classList.remove('hide');
         }
     }
 }
