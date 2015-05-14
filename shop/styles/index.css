@@ -49,3 +49,7 @@
 .extra-space-below-headerbar {
     height: 121px;
 }
+
+[data-component] {
+    display: none;
+}

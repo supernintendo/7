@@ -5,14 +5,18 @@
         <link rel="stylesheet" type="text/css" href="styles/index.css">
     </head>
     <body>
-        <div id="app"></div>
+        <div class="extra-space-below-headerbar"></div>
+        <div id="app">
+            <div data-view="product-list"></div>
+            <div data-view="shopping-cart"></div>
+        </div>
         <div class="headerbar">
             <h2>Heading</h2>
             <button>View Cart</button>
         </div>
-        <div class="extra-space-below-headerbar"></div>
-        <div class="container">
-            <div class="row product-list-row">
+        <div class="container" data-component="product-list">
+            <h2>Lorem Ipsum</h2>
+            <div class="row product-list-row" data-component="product-list-row">
                 <div class="one-third column product">
                     <h4>Item Title</h4>
                     <img class="u-max-full-width"></img>
@@ -27,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" data-component="shopping-cart">
             <h2>Cart</h2>
             <table class="u-full-width">
                 <thead>
@@ -39,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr data-component="shopping-cart-item">
                         <td>Lorem ipsum</td>
                         <td>
                             <input class="quantity-input" type="number">
