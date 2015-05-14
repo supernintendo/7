@@ -19,7 +19,10 @@ module Component {
             this.target.innerHTML = this.source.outerHTML;
             container = <HTMLScriptElement>this.target.children[0];
             subComponents = container.querySelector('[data-component]');
-            subComponents.remove();
+
+            if (subComponents) {
+                subComponents.remove();
+            }
             container.classList.remove('hide');
         }
     }
