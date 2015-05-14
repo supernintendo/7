@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="node_modules/skeleton.css/skeleton.css">
+        <link rel="stylesheet" type="text/css" href="styles/index.css">
+    </head>
+    <body>
+        <div id="app"></div>
+        <div class="headerbar">
+            <h2>Heading</h2>
+            <button>View Cart</button>
+        </div>
+        <div class="extra-space-below-headerbar"></div>
+        <div class="container">
+            <div class="row product-list-row">
+                <div class="one-third column product">
+                    <h4>Item Title</h4>
+                    <img class="u-max-full-width"></img>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Etiam placerat augue ac libero dignissim consequat. Fusce
+                        convallis at velit vel lobortis. Suspendisse semper, leo
+                        commodo dapibus euismod, augue nunc placerat lorem, in congue
+                        nibh lectus quis urna. Nam eu lectus. - <span><strong>$1.99</strong></span>
+                    </p>
+                    <button class="button-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Cart</h2>
+            <table class="u-full-width">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Item Price</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lorem ipsum</td>
+                        <td>
+                            <input class="quantity-input" type="number">
+                        </td>
+                        <td>$1.99</td>
+                        <td>$1.99</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="subtotal">
+                Subtotal - <span>$1.99</span>
+            </p>
+            <p class="checkout-and-subtotal">
+                <button class="add-to-cart-button button-primary">Checkout</button>
+            </p>
+        </div>
+        <div class="container"></div>
+        <script src="build/index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+/* Header bar */
+.headerbar {
+    background-color: #33C3F0;
+    color: #F5FAF9;
+    left: 0px;
+    top: 0px;
+    position: fixed;
+    width: 100%;
+    z-index: 925;
+}
+.headerbar > h2 {
+    display: inline-block;
+    padding-left: 12px;
+    padding-top: 12px;
+}
+.headerbar button {
+    background-color: #F5FAF9;
+    display: inline-block;
+    margin-right: 12px;
+    margin-top: 20px;
+    float: right;
+}
+
+/* Product list */
+.product-list-row {
+    padding-bottom: 32px;
+}
+.product-list-row button {
+    font-size: 9px;
+}
+.product-list-row > .product {
+    text-align: center;
+}
+.product-list-row > .product > .description {
+    font-size: 80%;
+    padding-top: 12px;
+    text-align: justify;
+}
+
+/* Shopping cart */
+.subtotal {
+    float: right;
+}
+.quantity-input {
+    max-width: 60px;
+}
+
+/* Others */
+.extra-space-below-headerbar {
+    height: 121px;
+}
