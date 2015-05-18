@@ -34,13 +34,14 @@ module Component {
             }
         }
         render() {
-            var container: Element;
+            var container: HTMLScriptElement;
 
             this.target.innerHTML = this.source.outerHTML;
+
             container = <HTMLScriptElement>this.target.children[0];
             this.removeSubComponents(container);
             this.fillTemplates(container);
-            container.classList.remove('hide');
+            delete container.dataset['component'];
         }
     }
 }

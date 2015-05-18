@@ -2,12 +2,12 @@
 
 class App {
     productList: Store.ProductCategory;
-    productListTwo: Store.ProductCategory;
     shoppingCart: Store.ShoppingCart;
 
     constructor() {
         var testProductCategory: Spec.ProductCategory = {
-            title: "product category"
+            title: "product category",
+            products: new Data.Products('test')
         };
 
         this.productList = new Store.ProductCategory(testProductCategory, '[data-view="product-list"]');
