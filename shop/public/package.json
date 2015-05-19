@@ -13,6 +13,6 @@
     "author": "",
     "license": "ISC",
     "scripts": {
-        "build": "rm -rf build && mkdir build && node_modules/typescript/bin/tsc ../ts/app.ts -out ./build/index.js && rm -rf json && cp -r ../ts/data json"
+        "build": "rm -rf build && mkdir build && node_modules/typescript/bin/tsc ../ts/app.ts -out ./build/index.js"
     }
 }
