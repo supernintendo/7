@@ -1,6 +1,17 @@
 /// <reference path="../references.ts"/>
 
 module Store {
+    export class Product extends Component.View {
+        constructor(attributes: Spec.Product, target: string) {
+            var params: Spec.Component = {
+                attributes: attributes,
+                source: '[data-component="product"]',
+                target: target
+            }
+            super(params);
+            this.render();
+        }
+    }
     export class ProductCategory extends Component.View {
         productRows: Array<ProductRow>;
 
@@ -25,19 +36,43 @@ module Store {
             element.innerHTML = views.join('');
 
             for (i = 0; i < rows; i++) {
-                this.productRows.push(new ProductRow(`[data-view="product-row-${i}"]`));
+                this.productRows.push(new ProductRow(
+                    response.data.slice(i * 3, i * 3 + 3).map(this.toProductSpec),
+                    `[data-view="product-row-${i}"]`
+                ));
             }
+        }
+        toProductSpec(attributes: any) {
+            return <Spec.Product>attributes;
         }
     }
     export class ProductRow extends Component.View {
-        constructor(target: string) {
+        products: Array<Product>;
+
+        constructor(products: Array<Spec.Product>, target: string) {
             var params: Spec.Component = {
                 attributes: null,
                 source: '[data-component="product-list-row"]',
                 target: target
             }
             super(params);
+            this.products = new Array<Product>();
+
             this.render();
+            this.prepareProducts(products);
+        }
+        prepareProducts(products: Array<Spec.Product>) {
+            var i: number,
+                views: Array<string> = Helper.generateArray(products.length, this.placeViews.bind(this, 'product-'));
+
+            this.target.innerHTML = views.join('');
+
+            for (i = 0; i < products.length; i++) {
+                this.products.push(new Product(
+                    products[i],
+                    `[data-view="product-${i}"]`
+                ));
+            }
         }
     }
     export class ShoppingCart extends Component.View {

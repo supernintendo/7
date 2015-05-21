@@ -29,10 +29,10 @@
 .product-list-row button {
     font-size: 9px;
 }
-.product-list-row > .product {
+.product-list-row .product {
     text-align: center;
 }
-.product-list-row > .product > .description {
+.product-list-row .product > .description {
     font-size: 80%;
     padding-top: 12px;
     text-align: justify;
