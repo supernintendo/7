@@ -1,5 +1,28 @@
 {
-    "foo": {
-        "bar": "ok"
-    }
+    "data": [
+        {
+            "description": "foo bar",
+            "image": "foo.png",
+            "name": "foo",
+            "price": 1.99
+        },
+        {
+            "description": "bar foo",
+            "image": "bar.png",
+            "name": "bar",
+            "price": 1.99
+        },
+        {
+            "description": "lorem ipsum",
+            "image": "lorem.png",
+            "name": "lorem",
+            "price": 1.99
+        },
+        {
+            "description": "lorem ipsum",
+            "image": "ipsum.png",
+            "name": "ipsum",
+            "price": 1.99
+        }
+    ]
 }

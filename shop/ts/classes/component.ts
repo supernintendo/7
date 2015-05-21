@@ -6,11 +6,18 @@ module Component {
         source: HTMLScriptElement;
         target: HTMLScriptElement;
 
+        ajaxResponse(response: any) {
+            return null;
+        }
         constructor(params: Spec.Component) {
             this.attributes = params.attributes;
-            this.source = <HTMLScriptElement>document.querySelector(params.source);
-            this.target = <HTMLScriptElement>document.querySelector(params.target);
-            this.render();
+            this.setSource(params.source);
+            this.setTarget(params.target);
+        }
+        fetchRemote() {
+            if (this.attributes && this.attributes.remote) {
+                new Ajax.Get(this.attributes.remote, this.ajaxResponse.bind(this));
+            }
         }
         fillTemplate(el: HTMLScriptElement) {
             if (el.dataset && el.dataset['template'] && this.attributes[el.dataset['template']]) {
@@ -25,6 +32,9 @@ module Component {
             for (i = 0; i < templates.length; i++) {
                 this.fillTemplate(<HTMLScriptElement>templates[i]);
             }
+        }
+        placeViews(prefix: string, value: any, index: number) {
+            return `<div data-view="${prefix}${index}"></div>`;
         }
         removeSubComponents(container: Element) {
             var subComponents: Element = container.querySelector('[data-component]');
@@ -42,6 +52,12 @@ module Component {
             this.removeSubComponents(container);
             this.fillTemplates(container);
             delete container.dataset['component'];
+        }
+        setSource(source: string) {
+            this.source = Helper.selector(document, source);
+        }
+        setTarget(target: string) {
+            this.target = Helper.selector(document, target);
         }
     }
 }

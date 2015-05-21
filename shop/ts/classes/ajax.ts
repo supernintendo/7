@@ -9,7 +9,7 @@ module Ajax {
                     callback(JSON.parse(request.responseText));
                 }
             }
-            request.open('GET', url, true);
+            request.open('GET', 'json/' + url, true);
             request.send();
         }
     }

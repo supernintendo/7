@@ -6,12 +6,9 @@ class App {
 
     constructor() {
         var testProductCategory: Spec.ProductCategory = {
-            title: "product category",
-            products: new Data.Products('test')
-        },
-        testRequest = new Ajax.Get('json/test.json', function(response: any) {
-            console.log(response);
-        });
+            remote: "test.json",
+            title: "product category"
+        };
 
         this.productList = new Store.ProductCategory(testProductCategory, '[data-view="product-list"]');
         this.shoppingCart = new Store.ShoppingCart('[data-view="shopping-cart"]');
