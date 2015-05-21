@@ -70,7 +70,7 @@ module Store {
             for (i = 0; i < products.length; i++) {
                 this.products.push(new Product(
                     products[i],
-                    `[data-view="product-${i}"]`
+                    `[data-view="${this.target.dataset['view']}"] [data-view="product-${i}"]`
                 ));
             }
         }
