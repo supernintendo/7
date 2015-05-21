@@ -33,6 +33,9 @@ module Component {
                 this.fillTemplate(<HTMLScriptElement>templates[i]);
             }
         }
+        hide() {
+            this.target.style.display = 'none';
+        }
         placeViews(prefix: string, value: any, index: number) {
             return `<div data-view="${prefix}${index}"></div>`;
         }
@@ -58,6 +61,9 @@ module Component {
         }
         setTarget(target: string) {
             this.target = Helper.selector(document, target);
+        }
+        show() {
+            this.target.style.display = '';
         }
     }
 }

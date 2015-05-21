@@ -21,6 +21,10 @@
     margin-top: 20px;
     float: right;
 }
+.headerbar div:not([data-component]) {
+    display: inline-block;
+    float: right;
+}
 
 /* Product list */
 .product-list-row {

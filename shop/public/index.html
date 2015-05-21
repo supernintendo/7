@@ -12,7 +12,11 @@
         </div>
         <div class="headerbar">
             <h2>Heading</h2>
-            <button>View Cart</button>
+            <div data-view="nav-buttons"></div>
+            <div data-component="nav-buttons">
+                <button data-control="back-to-store">Back to Store</button>
+                <button data-control="view-cart">View Cart</button>
+            </div>
         </div>
         <div class="container" data-component="product-list">
             <h2 data-template="title">Category Title</h2>

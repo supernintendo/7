@@ -8,13 +8,12 @@ module Helper {
     export function navigateToShop() {
         Shop.shoppingCart.hide();
         Shop.productList.show();
-        Shop.navButtons.backToShopButton.style.display = 'none';
-        Shop.navButtons.viewCartButton.style.display = '';
+        Navbar.backToShopButton.style.display = 'none';
+        Navbar.viewCartButton.style.display = '';
     }
     export function navigateToCart() {
         Shop.shoppingCart.show();
         Shop.productList.hide();
-        Shop.navButtons.backToShopButton.style.display = '';
-        Shop.navButtons.viewCartButton.style.display = 'none';
+
     }
 }

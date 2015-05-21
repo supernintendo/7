@@ -84,6 +84,7 @@ module Store {
             }
             super(params);
             this.render();
+            this.hide();
         }
     }
 }
