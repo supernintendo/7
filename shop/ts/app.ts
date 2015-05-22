@@ -2,18 +2,22 @@
 
 class App {
     navButtons: Navbar.Buttons;
-    productList: Store.ProductCategory;
+    productCategories: Array<Store.ProductCategory>;
     shoppingCart: Cart.ShoppingCart;
 
     constructor() {
-        var testProductCategory: Spec.ProductCategory = {
-            remote: "test.json",
-            title: "product category"
-        };
-
         this.navButtons = new Navbar.Buttons();
-        this.productList = new Store.ProductCategory(testProductCategory, '[data-view="product-list"]');
         this.shoppingCart = new Cart.ShoppingCart('[data-view="shopping-cart"]');
+        this.productCategories = [
+            new Store.ProductCategory({
+                remote: "test.json",
+                title: "product category"
+            }, '[data-view="product-list"]'),
+            new Store.ProductCategory({
+                remote: "test2.json",
+                title: "product category 2"
+            }, '[data-view="product-list-2"]')
+        ];
     }
 }
 

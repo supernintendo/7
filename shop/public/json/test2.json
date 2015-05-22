@@ -1,0 +1,11 @@
+{
+    "data": [
+        {
+            "description": "whoa ok",
+            "id": 1,
+            "image": "foo.gif",
+            "name": "whoa",
+            "price": 9.25
+        }
+    ]
+}

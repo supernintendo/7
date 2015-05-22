@@ -7,13 +7,17 @@ module Helper {
     }
     export function navigateToShop() {
         Shop.shoppingCart.hide();
-        Shop.productList.show();
+        Shop.productCategories.forEach(function(productCategory) {
+            productCategory.show();
+        });
         Shop.navButtons.backToShopButton.style.display = 'none';
         Shop.navButtons.viewCartButton.style.display = '';
     }
     export function navigateToCart() {
         Shop.shoppingCart.show();
-        Shop.productList.hide();
+        Shop.productCategories.forEach(function(productCategory) {
+            productCategory.hide();
+        });
         Shop.navButtons.backToShopButton.style.display = '';
         Shop.navButtons.viewCartButton.style.display = 'none';
     }
