@@ -63,7 +63,13 @@ module Component {
             this.target = Helper.selector(document, target);
         }
         show() {
-            this.target.style.display = '';
+            var target: HTMLScriptElement = this.target;
+
+            target.style.display = '';
+            target.style.opacity = '0';
+            setTimeout(function() {
+                target.style.opacity = '1';
+            }, 100);
         }
     }
 }

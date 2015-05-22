@@ -2,24 +2,28 @@
     "data": [
         {
             "description": "foo bar",
+            "id": 1,
             "image": "foo.png",
             "name": "foo",
             "price": 1.99
         },
         {
             "description": "bar foo",
+            "id": 2,
             "image": "bar.png",
             "name": "bar",
             "price": 1.99
         },
         {
             "description": "lorem ipsum",
+            "id": 3,
             "image": "lorem.png",
             "name": "lorem",
             "price": 1.99
         },
         {
             "description": "lorem ipsum",
+            "id": 4,
             "image": "ipsum.png",
             "name": "ipsum",
             "price": 1.99
