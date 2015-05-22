@@ -1,4 +1,10 @@
 /* Header bar */
+* {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition:    all 0.2s ease;
+    -ms-transition:     all 0.2s ease;
+    -o-transition:      all 0.2s ease;
+}
 .headerbar {
     width: 100%;
 
@@ -27,19 +33,21 @@
 }
 
 /* Product list */
-.product-list-row {
-    padding-bottom: 32px;
-}
-.product-list-row button {
-    font-size: 9px;
-}
-.product-list-row .product {
+.product {
     text-align: center;
+    padding-bottom: 18px;
 }
-.product-list-row .product > .description {
+.product > .description {
     font-size: 80%;
     padding-top: 12px;
-    text-align: justify;
+    text-align: center;
+}
+.product button {
+    font-size: 9px;
+    padding: 0 16px 0 16px;
+}
+h2 {
+    text-align: center;
 }
 
 /* Shopping cart */
