@@ -1,10 +1,4 @@
 /* Header bar */
-* {
-    -webkit-transition: all 0.2s ease;
-    -moz-transition:    all 0.2s ease;
-    -ms-transition:     all 0.2s ease;
-    -o-transition:      all 0.2s ease;
-}
 .headerbar {
     width: 100%;
 
@@ -64,6 +58,12 @@ h2 {
 }
 [data-component] {
     display: none;
+}
+[data-view] {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition:    all 0.2s ease;
+    -ms-transition:     all 0.2s ease;
+    -o-transition:      all 0.2s ease;
 }
 
 /* Loader */
