@@ -36,6 +36,21 @@ module Component {
         hide() {
             this.target.style.display = 'none';
         }
+        insertValues(container: Element) {
+            var i: number,
+                el: HTMLScriptElement,
+                nodes: NodeList = container.querySelectorAll('[data-replace]'),
+                parts: Array<string>;
+
+            for (i = 0; i < nodes.length; i++) {
+                el = <HTMLScriptElement>nodes[i];
+                parts = el.dataset['replace'].split(':');
+
+                if (this.attributes[parts[1]]) {
+                    el.setAttribute(parts[0], this.attributes[parts[1]]);
+                }
+            }
+        }
         placeViews(prefix: string, value: any, index: number) {
             return `<div data-view="${prefix}${index}"></div>`;
         }
@@ -54,6 +69,7 @@ module Component {
             container = <HTMLScriptElement>this.target.children[0];
             this.removeSubComponents(container);
             this.fillTemplates(container);
+            this.insertValues(container);
             delete container.dataset['component'];
         }
         setSource(source: string) {
@@ -69,7 +85,7 @@ module Component {
             target.style.opacity = '0';
             setTimeout(function() {
                 target.style.opacity = '1';
-            }, 100);
+            }, 1);
         }
     }
 }

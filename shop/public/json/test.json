@@ -3,28 +3,28 @@
         {
             "description": "foo bar",
             "id": 1,
-            "image": "foo.png",
+            "image": "foo.gif",
             "name": "foo",
             "price": 1.99
         },
         {
             "description": "bar foo",
             "id": 2,
-            "image": "bar.png",
+            "image": "foo.gif",
             "name": "bar",
             "price": 1.99
         },
         {
             "description": "lorem ipsum",
             "id": 3,
-            "image": "lorem.png",
+            "image": "foo.gif",
             "name": "lorem",
             "price": 1.99
         },
         {
             "description": "lorem ipsum",
             "id": 4,
-            "image": "ipsum.png",
+            "image": "foo.gif",
             "name": "ipsum",
             "price": 1.99
         }
