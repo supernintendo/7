@@ -21,7 +21,11 @@ module Component {
         }
         fillTemplate(el: HTMLScriptElement) {
             if (el.dataset && el.dataset['template'] && this.attributes[el.dataset['template']]) {
-                el.innerHTML = this.attributes[el.dataset['template']];
+                if (typeof this.attributes[el.dataset['template']] === 'function') {
+                    el.innerHTML = this.attributes[el.dataset['template']]();
+                } else {
+                    el.innerHTML = this.attributes[el.dataset['template']];
+                }
             }
         }
         fillTemplates(container: Element) {

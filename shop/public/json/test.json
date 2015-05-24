@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "description": "foo bar",
+            "description": "I love Sage!",
             "id": 1,
             "image": "foo.gif",
             "name": "foo",
@@ -26,6 +26,13 @@
             "id": 4,
             "image": "foo.gif",
             "name": "ipsum",
+            "price": 9.25
+        },
+        {
+            "description": "ok",
+            "id": 5,
+            "image": "foo.gif",
+            "name": "foo",
             "price": 9.25
         }
     ]

@@ -1,4 +1,11 @@
 module Helper {
+    export function getNumberOfItemsInCart() {
+        if (Shop) {
+            return Shop.shoppingCart.getTotalNumberOfItems()
+        } else {
+            return 0;
+        }
+    }
     export function generateArray(n: number, func: Function) {
         return Array.apply(null, Array(n)).map(func);
     }

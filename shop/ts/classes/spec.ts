@@ -1,4 +1,13 @@
 module Spec {
+    export interface CartItem {
+        product: Product;
+        quantity: number;
+    }
+    export interface Component {
+        attributes: any;
+        source: string;
+        target: string;
+    }
     export interface Product {
         description: string;
         id: number;
@@ -9,9 +18,8 @@ module Spec {
     export interface ProductCategory {
         title: string;
     }
-    export interface Component {
-        attributes: any;
-        source: string;
-        target: string;
+    export interface ShoppingCart {
+        items: Array<CartItem>;
+        subtotal: Function;
     }
 }

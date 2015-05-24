@@ -8,18 +8,19 @@
     <body>
         <div class="extra-space-below-headerbar"></div>
         <div id="app">
+            <div class="headerbar">
+                <h2>Heading</h2>
+                <div class="nav-buttons" data-view="nav-buttons"></div>
+            </div>
             <div data-view="product-list"></div>
-            <div data-view="product-list-2"></div>
             <div data-view="shopping-cart"></div>
         </div>
-        <div class="headerbar">
-            <h2>Heading</h2>
-            <div data-view="nav-buttons"></div>
-            <div data-component="nav-buttons">
-                <button data-control="back-to-store">Back to Store</button>
-                <button data-control="view-cart">View Cart</button>
-            </div>
+
+        <div data-component="nav-buttons">
+            <button data-control="back-to-store">Back to Store</button>
+            <button data-control="view-cart">View Cart</button>
         </div>
+
         <div class="container" data-component="product-list">
             <h2 data-template="title">Category Title</h2>
             <div class="product-list-rows">
@@ -39,7 +40,7 @@
                         </span>
                         - $<strong><span data-template="price"></span></strong>
                     </p>
-                    <button class="button-primary" data-replace="data-id:id">Add to Cart</button>
+                    <button class="button-primary" data-control="add-to-cart-button" data-replace="data-id:id">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -66,7 +67,7 @@
                 </tbody>
             </table>
             <p class="subtotal">
-                Subtotal - <span>$1.99</span>
+                Subtotal - <span data-template="subtotal">$1.99</span>
             </p>
             <p class="checkout-and-subtotal">
                 <button class="add-to-cart-button button-primary">Checkout</button>

@@ -7,17 +7,13 @@ class App {
 
     constructor() {
         this.navButtons = new Navbar.Buttons();
-        this.shoppingCart = new Cart.ShoppingCart('[data-view="shopping-cart"]');
         this.productCategories = [
             new Store.ProductCategory({
                 remote: "test.json",
                 title: "product category"
-            }, '[data-view="product-list"]'),
-            new Store.ProductCategory({
-                remote: "test2.json",
-                title: "product category 2"
-            }, '[data-view="product-list-2"]')
+            }, '[data-view="product-list"]')
         ];
+        this.shoppingCart = new Cart.ShoppingCart('[data-view="shopping-cart"]');
     }
 }
 

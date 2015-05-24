@@ -10,6 +10,15 @@ module Store {
             }
             super(params);
             this.render();
+            this.addListener();
+        }
+        addListener() {
+            var button: HTMLScriptElement = Helper.selector(this.target, '[data-control="add-to-cart-button"]');
+
+            button.addEventListener('click', this.addToCart.bind(this));
+        }
+        addToCart() {
+            Shop.shoppingCart.addToCart(this.attributes);
         }
     }
     export class ProductCategory extends Component.View {

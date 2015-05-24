@@ -5,7 +5,9 @@
     background-color: #33C3F0;
     color: #F5FAF9;
     left: 0px;
+    overflow: hidden;
     position: fixed;
+    text-align: center;
     top: 0px;
     z-index: 925;
 }
@@ -14,16 +16,12 @@
     padding-left: 12px;
     padding-top: 12px;
 }
-.headerbar button {
-    background-color: #F5FAF9;
+.nav-buttons {
     display: inline-block;
-    margin-right: 12px;
-    margin-top: 20px;
-    float: right;
+    padding-top: -12px;
 }
-.headerbar div:not([data-component]) {
-    display: inline-block;
-    float: right;
+.nav-buttons button {
+    background-color: #F5FAF9;
 }
 
 /* Product list */
