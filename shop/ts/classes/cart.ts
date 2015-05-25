@@ -5,7 +5,7 @@ module Cart {
         constructor(target: string) {
             var params: Spec.Component = {
                 attributes: <Spec.ShoppingCart>{
-                    items: [],
+                    items: new Array<Spec.CartItem>(),
                     subtotal: this.getSubtotal.bind(this)
                 },
                 source: '[data-component="shopping-cart"]',
@@ -13,13 +13,13 @@ module Cart {
             }
             super(params);
             this.render();
-            this.prepareRows();
             this.hide();
         }
         addToCart(product) {
-            var matches: Array<Spec.CartItem> = this.attributes.items.filter(
-                this.checkIfItemIsInCart.bind(this, product)
-            );
+            var matches: Array<Spec.CartItem> = this.checkFor(product);
+
+            /* Increase quantity of item if it is in the cart, otherwise
+               add it. */
             if (matches.length > 0) {
                 matches[0].quantity++;
             } else {
@@ -31,8 +31,8 @@ module Cart {
             this.render();
             this.hide();
         }
-        checkIfItemIsInCart(product, cartItem) {
-            return product.id === cartItem.product.id;
+        checkFor(product: Spec.Product) {
+            return this.attributes.items.filter(this.itemsInCart.bind(this, product));
         }
         getSubtotal() {
             var subtotal = this.attributes.items.reduce(this.itemsToSubtotal, 0);
@@ -44,18 +44,14 @@ module Cart {
 
             return quantity;
         }
-        itemsToSubtotal(previous, current) {
-            return previous + current.product.price * current.quantity;
+        itemsInCart(product, cartItem) {
+            return product.id === cartItem.product.id;
         }
         itemsToQuantity(previous, current) {
             return previous + current.quantity;
         }
-        prepareRows() {
-            // var i: number,
-            //     rows: this.attributes.items.map(this.tableRow),
-            //     views: Array<string> = Helper.generateArray(this.attributes.items.length, this.placeViews.bind(this, 'cart-item-'));
-
-            // Helper.selector(this.target, 'tbody').innerHTML = views.join('');
+        itemsToSubtotal(previous, current) {
+            return previous + current.product.price * current.quantity;
         }
     }
 }

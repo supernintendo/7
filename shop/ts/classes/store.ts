@@ -32,7 +32,6 @@ module Store {
             }
             super(params);
             this.productRows = new Array<ProductRow>();
-
             this.render();
             this.fetchRemote();
         }
@@ -44,6 +43,7 @@ module Store {
 
             element.innerHTML = views.join('');
 
+            // Three items per row.
             for (i = 0; i < rows; i++) {
                 this.productRows.push(new ProductRow(
                     response.data.slice(i * 3, i * 3 + 3).map(this.toProductSpec),
@@ -66,7 +66,6 @@ module Store {
             }
             super(params);
             this.products = new Array<Product>();
-
             this.render();
             this.prepareProducts(products);
         }

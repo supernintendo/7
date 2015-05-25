@@ -6,13 +6,13 @@ module Component {
         source: HTMLScriptElement;
         target: HTMLScriptElement;
 
-        ajaxResponse(response: any) {
-            return null;
-        }
         constructor(params: Spec.Component) {
             this.attributes = params.attributes;
             this.setSource(params.source);
             this.setTarget(params.target);
+        }
+        ajaxResponse(response: any) {
+            return null;
         }
         fetchRemote() {
             if (this.attributes && this.attributes.remote) {
@@ -20,11 +20,14 @@ module Component {
             }
         }
         fillTemplate(el: HTMLScriptElement) {
-            if (el.dataset && el.dataset['template'] && this.attributes[el.dataset['template']]) {
-                if (typeof this.attributes[el.dataset['template']] === 'function') {
-                    el.innerHTML = this.attributes[el.dataset['template']]();
+            var key: string = el.dataset['template'],
+                attribute: any = this.attributes[key];
+
+            if (attribute) {
+                if (typeof attribute === 'function') {
+                    el.innerHTML = attribute();
                 } else {
-                    el.innerHTML = this.attributes[el.dataset['template']];
+                    el.innerHTML = attribute;
                 }
             }
         }
@@ -33,6 +36,7 @@ module Component {
                 el: HTMLScriptElement,
                 templates: NodeList = container.querySelectorAll('[data-template]');
 
+            // No .forEach on a NodeList. :(
             for (i = 0; i < templates.length; i++) {
                 this.fillTemplate(<HTMLScriptElement>templates[i]);
             }
@@ -47,7 +51,7 @@ module Component {
                 parts: Array<string>;
 
             for (i = 0; i < nodes.length; i++) {
-                el = <HTMLScriptElement>nodes[i];
+                el = <HTMLScriptElement>nodes[i]; // Cast each Node to an HTMLScriptElement.
                 parts = el.dataset['replace'].split(':');
 
                 if (this.attributes[parts[1]]) {
@@ -69,7 +73,6 @@ module Component {
             var container: HTMLScriptElement;
 
             this.target.innerHTML = this.source.outerHTML;
-
             container = <HTMLScriptElement>this.target.children[0];
             this.removeSubComponents(container);
             this.fillTemplates(container);
@@ -86,6 +89,8 @@ module Component {
             var target: HTMLScriptElement = this.target;
 
             target.style.display = '';
+
+            // Fade the element in.
             target.style.opacity = '0';
             setTimeout(function() {
                 target.style.opacity = '1';
