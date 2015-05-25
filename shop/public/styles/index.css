@@ -15,13 +15,17 @@
     display: inline-block;
     padding-left: 12px;
     padding-top: 12px;
+    vertical-align: middle;
 }
 .nav-buttons {
     display: inline-block;
     padding-top: -12px;
+    vertical-align: middle;
 }
 .nav-buttons button {
     background-color: #F5FAF9;
+    font-size: 9px;
+    padding: 0 16px 0 16px;
 }
 
 /* Product list */
@@ -132,4 +136,8 @@ h2 {
     -webkit-animation: loader-bar 1500ms 450ms infinite ease-out;
     animation: loader-bar 1500ms 450ms infinite ease-out;
     right: -1.6em;
+}
+.spacing {
+    width: 1.4rem;
+    display: inline-block;
 }

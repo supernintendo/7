@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "description": "I love Sage!",
+            "description": "foo bar",
             "id": 1,
             "image": "foo.gif",
             "name": "foo",
