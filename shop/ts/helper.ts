@@ -28,4 +28,11 @@ module Helper {
         Shop.navButtons.backToShopButton.style.display = '';
         Shop.navButtons.viewCartButton.style.display = 'none';
     }
+    export function ready(callback: Function) {
+        if (document.readyState !== 'loading'){
+            callback();
+        } else {
+            document.addEventListener('DOMContentLoaded', ready.bind(this, callback));
+        }
+    }
 }

@@ -1,5 +1,7 @@
 /// <reference path="./references.ts"/>
 
+var Shop: App;
+
 class App {
     navButtons: Navbar.Buttons;
     productCategories: Array<Store.ProductCategory>;
@@ -17,5 +19,8 @@ class App {
     }
 }
 
-var Shop = new App();
-Helper.navigateToShop();
+Helper.ready(function() {
+    Shop = new App();
+    Helper.navigateToShop();
+});
+

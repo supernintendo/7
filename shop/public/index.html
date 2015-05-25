@@ -4,46 +4,63 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="node_modules/skeleton.css/skeleton.css">
         <link rel="stylesheet" type="text/css" href="styles/index.css">
+        <script src="build/index.js"></script>
     </head>
     <body>
-        <div class="extra-space-below-headerbar"></div>
+        <!--       -->
+        <!-- Views -->
+        <!--       -->
         <div id="app">
             <div class="headerbar">
                 <h2>Heading</h2>
                 <div class="spacing"></div>
                 <div class="nav-buttons" data-view="nav-buttons"></div>
             </div>
+            <div class="extra-space-below-headerbar"></div>
             <div data-view="product-list"></div>
             <div data-view="shopping-cart"></div>
         </div>
+
+        <!--            -->
+        <!-- Components -->
+        <!--            -->
+
+        <!-- Navbar.Buttons -->
         <div data-component="nav-buttons">
             <button data-control="back-to-store">Back to Store</button>
             <button data-control="view-cart">View Cart</button>
         </div>
 
+        <!-- Store.ProductCategory -->
         <div class="container" data-component="product-list">
             <h2 data-template="title">Category Title</h2>
             <div class="product-list-rows">
                 <div class="loader"></div>
-            </div>
-            <div class="row product-list-row" data-component="product-list-row">
-                <div class="one-third column product" data-component="product">
-                    <h4 data-template="name">Item Title</h4>
-                    <img class="u-max-full-width" data-replace="src:image"></img>
-                    <p class="description">
-                        <span data-template="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Etiam placerat augue ac libero dignissim consequat. Fusce
-                            convallis at velit vel lobortis. Suspendisse semper, leo
-                            commodo dapibus euismod, augue nunc placerat lorem, in congue
-                            nibh lectus quis urna. Nam eu lectus.
-                        </span>
-                        - $<strong><span data-template="price"></span></strong>
-                    </p>
-                    <button class="button-primary" data-control="add-to-cart-button" data-replace="data-id:id">Add to Cart</button>
+
+                <!-- Store.ProductRow -->
+                <div class="row product-list-row" data-component="product-list-row">
+
+                    <!-- Store.Product -->
+                    <div class="one-third column product" data-component="product">
+                        <h4 data-template="name">Item Title</h4>
+                        <img class="u-max-full-width" data-replace="src:image"></img>
+                        <p class="description">
+                            <span data-template="description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Etiam placerat augue ac libero dignissim consequat. Fusce
+                                convallis at velit vel lobortis. Suspendisse semper, leo
+                                commodo dapibus euismod, augue nunc placerat lorem, in congue
+                                nibh lectus quis urna. Nam eu lectus.
+                            </span>
+                            - $<strong><span data-template="price"></span></strong>
+                        </p>
+                        <button class="button-primary" data-control="add-to-cart-button" data-replace="data-id:id">Add to Cart</button>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Cart.ShoppingCart -->
         <div class="container" data-component="shopping-cart">
             <h2>Cart</h2>
             <table class="u-full-width">
@@ -73,7 +90,5 @@
                 <button class="add-to-cart-button button-primary">Checkout</button>
             </p>
         </div>
-        <div class="container"></div>
-        <script src="build/index.js"></script>
     </body>
 </html>
