@@ -39,7 +39,7 @@ module Store {
             var i: number,
                 rows: number = Math.ceil(response.data.length / 3),
                 element: HTMLScriptElement = Helper.selector(this.target, '.product-list-rows'),
-                views: Array<string> = Helper.generateArray(rows, this.placeViews.bind(this, 'product-row-'));
+                views: Array<string> = Helper.generateArray(rows, this.placeViews.bind(this, 'product-row-', 'div'));
 
             element.innerHTML = views.join('');
 
@@ -71,7 +71,7 @@ module Store {
         }
         prepareProducts(products: Array<Spec.Product>) {
             var i: number,
-                views: Array<string> = Helper.generateArray(products.length, this.placeViews.bind(this, 'product-'));
+                views: Array<string> = Helper.generateArray(products.length, this.placeViews.bind(this, 'product-', 'div'));
 
             this.target.innerHTML = views.join('');
 

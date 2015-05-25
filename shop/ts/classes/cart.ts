@@ -1,7 +1,23 @@
 /// <reference path="../references.ts"/>
 
 module Cart {
+    export class CartItem extends Component.View {
+        constructor(attributes: Spec.CartItem, target: string) {
+            var params: Spec.Component = {
+                attributes: {
+                    price: attributes.product.price,
+                    name: attributes.product.name
+                },
+                source: '[data-component="shopping-cart-item"]',
+                target: target
+            }
+            super(params);
+            this.render();
+        }
+    }
     export class ShoppingCart extends Component.View {
+        cartItems: Array<CartItem>;
+
         constructor(target: string) {
             var params: Spec.Component = {
                 attributes: <Spec.ShoppingCart>{
@@ -11,9 +27,9 @@ module Cart {
                 source: '[data-component="shopping-cart"]',
                 target: target
             }
+            this.cartItems = new Array<CartItem>();
             super(params);
             this.render();
-            this.hide();
         }
         addToCart(product) {
             var matches: Array<Spec.CartItem> = this.checkFor(product);
@@ -52,6 +68,24 @@ module Cart {
         }
         itemsToSubtotal(previous, current) {
             return previous + current.product.price * current.quantity;
+        }
+        prepareCartItems() {
+            var i: number,
+                views: Array<string> = Helper.generateArray(this.attributes.items.length, this.placeViews.bind(this, 'cart-item-', 'tr'));
+
+            Helper.selector(this.target, 'tbody').innerHTML = views.join('');
+
+            for (i = 0; i < this.attributes.items.length; i++) {
+                this.cartItems.push(new CartItem(
+                   this.attributes.items[i],
+                    `[data-view="cart-item-${i}"]`
+                ));
+            }
+        }
+        render() {
+            this.renderContent();
+            this.prepareCartItems();
+            this.hide();
         }
     }
 }

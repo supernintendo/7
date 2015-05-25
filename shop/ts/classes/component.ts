@@ -12,7 +12,7 @@ module Component {
             this.setTarget(params.target);
         }
         ajaxResponse(response: any) {
-            return null;
+            return response;
         }
         fetchRemote() {
             if (this.attributes && this.attributes.remote) {
@@ -59,8 +59,8 @@ module Component {
                 }
             }
         }
-        placeViews(prefix: string, value: any, index: number) {
-            return `<div data-view="${prefix}${index}"></div>`;
+        placeViews(prefix: string, tag: string, value: any, index: number) {
+            return `<${tag} data-view="${prefix}${index}"></${tag}>`;
         }
         removeSubComponents(container: Element) {
             var subComponents: Element = container.querySelector('[data-component]');
@@ -70,6 +70,9 @@ module Component {
             }
         }
         render() {
+            this.renderContent();
+        }
+        renderContent() {
             var container: HTMLScriptElement;
 
             this.target.innerHTML = this.source.outerHTML;

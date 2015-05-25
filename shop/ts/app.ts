@@ -23,4 +23,3 @@ Helper.ready(function() {
     Shop = new App();
     Helper.navigateToShop();
 });
-
