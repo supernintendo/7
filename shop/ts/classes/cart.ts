@@ -2,17 +2,39 @@
 
 module Cart {
     export class CartItem extends Component.View {
+        item: Spec.Product;
+
         constructor(attributes: Spec.CartItem, target: string) {
             var params: Spec.Component = {
                 attributes: {
+                    image: attributes.product.image,
+                    name: attributes.product.name,
                     price: attributes.product.price,
-                    name: attributes.product.name
+                    quantity: attributes.quantity,
+                    totalPrice: this.getTotalPrice.bind(this)
                 },
                 source: '[data-component="shopping-cart-item"]',
                 target: target
             }
             super(params);
             this.render();
+            this.item = attributes.product;
+            this.addListener();
+        }
+        addListener() {
+            var input: HTMLScriptElement = Helper.selector(this.target, '[data-control="quantity-input"]');
+            input.addEventListener('input', this.changeQuantity.bind(this));
+        }
+        changeQuantity(e: Event) {
+            var target: HTMLInputElement = <HTMLInputElement>e.target;
+
+            Shop.shoppingCart.setQuantityOfItem(this.item, Number(target.value));
+        }
+        getContainer() {
+            return <HTMLScriptElement>this.target;
+        }
+        getTotalPrice() {
+            return this.attributes.price * this.attributes.quantity;
         }
     }
     export class ShoppingCart extends Component.View {
@@ -30,6 +52,7 @@ module Cart {
             this.cartItems = new Array<CartItem>();
             super(params);
             this.render();
+            this.hide();
         }
         addToCart(product) {
             var matches: Array<Spec.CartItem> = this.checkFor(product);
@@ -71,9 +94,10 @@ module Cart {
         }
         prepareCartItems() {
             var i: number,
+                tableBody: HTMLScriptElement = Helper.selector(this.target, 'tbody'),
                 views: Array<string> = Helper.generateArray(this.attributes.items.length, this.placeViews.bind(this, 'cart-item-', 'tr'));
 
-            Helper.selector(this.target, 'tbody').innerHTML = views.join('');
+            tableBody.innerHTML = views.join('');
 
             for (i = 0; i < this.attributes.items.length; i++) {
                 this.cartItems.push(new CartItem(
@@ -82,10 +106,15 @@ module Cart {
                 ));
             }
         }
+        setQuantityOfItem(product, quantity) {
+            var matches: Array<Spec.CartItem> = this.checkFor(product);
+
+            matches[0].quantity = quantity;
+            this.render();
+        }
         render() {
             this.renderContent();
             this.prepareCartItems();
-            this.hide();
         }
     }
 }

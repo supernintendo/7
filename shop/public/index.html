@@ -7,9 +7,11 @@
         <script src="build/index.js"></script>
     </head>
     <body>
+
         <!--       -->
         <!-- Views -->
         <!--       -->
+
         <div id="app">
             <div class="headerbar">
                 <h2>Heading</h2>
@@ -73,15 +75,15 @@
                         <th>Total Price</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="cart-table-body">
                     <tr data-component="shopping-cart-item">
-                        <td></td>
+                        <td><img class="cart-image" data-replace="src:image"></img></td>
                         <td data-template="name">Lorem ipsum</td>
                         <td>
-                            <input class="quantity-input" type="number">
+                            <input class="quantity-input" data-control="quantity-input" data-replace="value:quantity" type="number">
                         </td>
                         <td data-template="price">$1.99</td>
-                        <td>$1.99</td>
+                        <td data-template="totalPrice">$1.99</td>
                     </tr>
                 </tbody>
             </table>

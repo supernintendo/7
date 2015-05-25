@@ -41,6 +41,9 @@ module Component {
                 this.fillTemplate(<HTMLScriptElement>templates[i]);
             }
         }
+        getContainer() {
+            return <HTMLScriptElement>this.target.children[0];
+        }
         hide() {
             this.target.style.display = 'none';
         }
@@ -76,7 +79,7 @@ module Component {
             var container: HTMLScriptElement;
 
             this.target.innerHTML = this.source.outerHTML;
-            container = <HTMLScriptElement>this.target.children[0];
+            container = this.getContainer();
             this.removeSubComponents(container);
             this.fillTemplates(container);
             this.insertValues(container);

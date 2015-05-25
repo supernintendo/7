@@ -53,6 +53,9 @@ h2 {
 .quantity-input {
     max-width: 60px;
 }
+.cart-image {
+    max-width: 40%;
+}
 
 /* Others */
 .extra-space-below-headerbar {
