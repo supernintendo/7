@@ -1,4 +1,11 @@
 /* Header bar */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    margin: 0;
+}
+
 .headerbar {
     width: 100%;
 

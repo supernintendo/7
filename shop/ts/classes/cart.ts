@@ -9,9 +9,9 @@ module Cart {
                 attributes: {
                     image: attributes.product.image,
                     name: attributes.product.name,
-                    price: attributes.product.price,
+                    price: this.getFormattedPrice.bind(this, attributes.product.price),
                     quantity: attributes.quantity,
-                    totalPrice: this.getTotalPrice.bind(this)
+                    totalPrice: this.getTotalPrice.bind(this, attributes.product.price, attributes.quantity)
                 },
                 source: '[data-component="shopping-cart-item"]',
                 target: target
@@ -23,7 +23,14 @@ module Cart {
         }
         addListener() {
             var input: HTMLScriptElement = Helper.selector(this.target, '[data-control="quantity-input"]');
-            input.addEventListener('input', this.changeQuantity.bind(this));
+            input.addEventListener('blur', this.changeQuantity.bind(this));
+            input.addEventListener('keyup', this.checkKeyUp.bind(this));
+        }
+        checkKeyUp(e: KeyboardEvent) {
+            if (e.keyCode === 13) {
+                var input: HTMLScriptElement = Helper.selector(this.target, '[data-control="quantity-input"]');
+                input.blur();
+            }
         }
         changeQuantity(e: Event) {
             var target: HTMLInputElement = <HTMLInputElement>e.target;
@@ -33,8 +40,11 @@ module Cart {
         getContainer() {
             return <HTMLScriptElement>this.target;
         }
-        getTotalPrice() {
-            return this.attributes.price * this.attributes.quantity;
+        getFormattedPrice(price: number) {
+            return '$' + price.toFixed(2);
+        }
+        getTotalPrice(price: number, quantity: number) {
+            return '$' + (price * quantity).toFixed(2);
         }
     }
     export class ShoppingCart extends Component.View {
@@ -106,10 +116,24 @@ module Cart {
                 ));
             }
         }
+        removeItemFromCart(product) {
+            var i: number;
+
+            for (i = 0; i < this.attributes.items.length; i++) {
+                if (this.attributes.items[i].product.id === product.id) {
+                    this.attributes.items.splice(i, 1);
+                    break;
+                }
+            }
+        }
         setQuantityOfItem(product, quantity) {
             var matches: Array<Spec.CartItem> = this.checkFor(product);
 
-            matches[0].quantity = quantity;
+            if (quantity <= 0) {
+                this.removeItemFromCart(product);
+            } else {
+                matches[0].quantity = quantity;
+            }
             this.render();
         }
         render() {
