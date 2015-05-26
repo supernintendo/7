@@ -23,6 +23,7 @@ module Cart {
         }
         addListener() {
             var input: HTMLScriptElement = Helper.selector(this.target, '[data-control="quantity-input"]');
+
             input.addEventListener('blur', this.changeQuantity.bind(this));
             input.addEventListener('keyup', this.checkKeyUp.bind(this));
         }
@@ -64,6 +65,11 @@ module Cart {
             this.render();
             this.hide();
         }
+        addListener() {
+            var checkoutButton: HTMLScriptElement = Helper.selector(this.target, '[data-control="checkout-button"]');
+
+            checkoutButton.addEventListener('click', this.checkout);
+        }
         addToCart(product) {
             var matches: Array<Spec.CartItem> = this.checkFor(product);
 
@@ -78,10 +84,14 @@ module Cart {
                 });
             }
             this.render();
+            Shop.navButtons.updateViewCartButtonDisplay();
             this.hide();
         }
         checkFor(product: Spec.Product) {
             return this.attributes.items.filter(this.itemsInCart.bind(this, product));
+        }
+        checkout() {
+            alert('This is not real.');
         }
         getSubtotal() {
             var subtotal = this.attributes.items.reduce(this.itemsToSubtotal, 0);
@@ -135,9 +145,11 @@ module Cart {
                 matches[0].quantity = quantity;
             }
             this.render();
+            Shop.navButtons.updateViewCartButtonDisplay();
         }
         render() {
             this.renderContent();
+            this.addListener();
             this.prepareCartItems();
         }
     }

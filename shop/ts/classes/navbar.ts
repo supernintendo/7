@@ -24,5 +24,14 @@ module Navbar {
             this.backToShopButton = Helper.selector(this.target, '[data-control="back-to-store"]');
             this.viewCartButton = Helper.selector(this.target, '[data-control="view-cart"]');
         }
+        updateViewCartButtonDisplay() {
+            var quantity = Helper.getNumberOfItemsInCart();
+
+            if (quantity > 0) {
+                this.viewCartButton.innerHTML = `View Cart (${quantity})`;
+            } else {
+                this.viewCartButton.innerHTML = 'View Cart';
+            }
+        }
     }
 }
