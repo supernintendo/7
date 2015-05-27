@@ -20,7 +20,7 @@ module Component {
             }
         }
         fillTemplate(el: HTMLScriptElement) {
-            var key: string = el.dataset['template'],
+            let key: string = el.dataset['template'],
                 attribute: any = this.attributes[key];
 
             if (attribute) {
@@ -32,8 +32,7 @@ module Component {
             }
         }
         fillTemplates(container: Element) {
-            var i: number,
-                el: HTMLScriptElement,
+            let i: number,
                 templates: NodeList = container.querySelectorAll('[data-template]');
 
             // No .forEach on a NodeList. :(
@@ -48,14 +47,12 @@ module Component {
             this.target.style.display = 'none';
         }
         insertValues(container: Element) {
-            var i: number,
-                el: HTMLScriptElement,
-                nodes: NodeList = container.querySelectorAll('[data-replace]'),
-                parts: Array<string>;
+            let i: number,
+                nodes: NodeList = container.querySelectorAll('[data-replace]');
 
             for (i = 0; i < nodes.length; i++) {
-                el = <HTMLScriptElement>nodes[i]; // Cast each Node to an HTMLScriptElement.
-                parts = el.dataset['replace'].split(':');
+                let el: HTMLScriptElement = <HTMLScriptElement>nodes[i], // Cast each Node to an HTMLScriptElement.
+                    parts: Array<string> = el.dataset['replace'].split(':');
 
                 if (this.attributes[parts[1]]) {
                     el.setAttribute(parts[0], this.attributes[parts[1]]);
@@ -66,7 +63,7 @@ module Component {
             return `<${tag} data-view="${prefix}${index}"></${tag}>`;
         }
         removeSubComponents(container: Element) {
-            var subComponents: Element = container.querySelector('[data-component]');
+            let subComponents: Element = container.querySelector('[data-component]');
 
             if (subComponents) {
                 subComponents.remove();
@@ -76,13 +73,13 @@ module Component {
             this.renderContent();
         }
         renderContent() {
-            var container: HTMLScriptElement;
-
             this.target.innerHTML = this.source.outerHTML;
-            container = this.getContainer();
+
+            let container: HTMLScriptElement = this.getContainer();
             this.removeSubComponents(container);
             this.fillTemplates(container);
             this.insertValues(container);
+
             delete container.dataset['component'];
         }
         setSource(source: string) {
@@ -92,13 +89,13 @@ module Component {
             this.target = Helper.selector(document, target);
         }
         show() {
-            var target: HTMLScriptElement = this.target;
+            let target: HTMLScriptElement = this.target;
 
             target.style.display = '';
 
             // Fade the element in.
             target.style.opacity = '0';
-            setTimeout(function() {
+            setTimeout(() => {
                 target.style.opacity = '1';
             }, 1);
         }

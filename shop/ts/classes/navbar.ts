@@ -6,7 +6,7 @@ module Navbar {
         viewCartButton: HTMLScriptElement;
 
         constructor() {
-            var params: Spec.Component = {
+            let params: Spec.Component = {
                 attributes: null,
                 source: '[data-component="nav-buttons"]',
                 target: '[data-view="nav-buttons"]'
@@ -25,7 +25,7 @@ module Navbar {
             this.viewCartButton = Helper.selector(this.target, '[data-control="view-cart"]');
         }
         updateViewCartButtonDisplay() {
-            var quantity = Helper.getNumberOfItemsInCart();
+            let quantity = Helper.getNumberOfItemsInCart();
 
             if (quantity > 0) {
                 this.viewCartButton.innerHTML = `View Cart (${quantity})`;

@@ -3,7 +3,7 @@
 module Store {
     export class Product extends Component.View {
         constructor(attributes: Spec.Product, target: string) {
-            var params: Spec.Component = {
+            let params: Spec.Component = {
                 attributes: attributes,
                 source: '[data-component="product"]',
                 target: target
@@ -13,19 +13,19 @@ module Store {
             this.addListener();
         }
         addListener() {
-            var button: HTMLScriptElement = Helper.selector(this.target, '[data-control="add-to-cart-button"]');
+            let button: HTMLScriptElement = Helper.selector(this.target, '[data-control="add-to-cart-button"]');
 
             button.addEventListener('click', this.addToCart.bind(this));
         }
         addToCart() {
-            Shop.shoppingCart.addToCart(this.attributes);
+            SHOP.shoppingCart.addToCart(this.attributes);
         }
     }
     export class ProductCategory extends Component.View {
         productRows: Array<ProductRow>;
 
         constructor(attributes: Spec.ProductCategory, target: string) {
-            var params: Spec.Component = {
+            let params: Spec.Component = {
                 attributes: attributes,
                 source: '[data-component="product-list"]',
                 target: target
@@ -36,7 +36,7 @@ module Store {
             this.fetchRemote();
         }
         ajaxResponse(response: any) {
-            var i: number,
+            let i: number,
                 rows: number = Math.ceil(response.data.length / 3),
                 element: HTMLScriptElement = Helper.selector(this.target, '.product-list-rows'),
                 views: Array<string> = Helper.generateArray(rows, this.placeViews.bind(this, 'product-row-', 'div'));
@@ -59,7 +59,7 @@ module Store {
         products: Array<Product>;
 
         constructor(products: Array<Spec.Product>, target: string) {
-            var params: Spec.Component = {
+            let params: Spec.Component = {
                 attributes: null,
                 source: '[data-component="product-list-row"]',
                 target: target
@@ -70,7 +70,7 @@ module Store {
             this.prepareProducts(products);
         }
         prepareProducts(products: Array<Spec.Product>) {
-            var i: number,
+            let i: number,
                 views: Array<string> = Helper.generateArray(products.length, this.placeViews.bind(this, 'product-', 'div'));
 
             this.target.innerHTML = views.join('');

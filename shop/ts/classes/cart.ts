@@ -5,7 +5,7 @@ module Cart {
         item: Spec.Product;
 
         constructor(attributes: Spec.CartItem, target: string) {
-            var params: Spec.Component = {
+            let params: Spec.Component = {
                 attributes: {
                     image: attributes.product.image,
                     name: attributes.product.name,
@@ -22,21 +22,22 @@ module Cart {
             this.addListener();
         }
         addListener() {
-            var input: HTMLScriptElement = Helper.selector(this.target, '[data-control="quantity-input"]');
+            let input: HTMLScriptElement = Helper.selector(this.target, '[data-control="quantity-input"]');
 
             input.addEventListener('blur', this.changeQuantity.bind(this));
             input.addEventListener('keyup', this.checkKeyUp.bind(this));
         }
         checkKeyUp(e: KeyboardEvent) {
             if (e.keyCode === 13) {
-                var input: HTMLScriptElement = Helper.selector(this.target, '[data-control="quantity-input"]');
+                let input: HTMLScriptElement = Helper.selector(this.target, '[data-control="quantity-input"]');
+
                 input.blur();
             }
         }
         changeQuantity(e: Event) {
-            var target: HTMLInputElement = <HTMLInputElement>e.target;
+            let target: HTMLInputElement = <HTMLInputElement>e.target;
 
-            Shop.shoppingCart.setQuantityOfItem(this.item, Number(target.value));
+            SHOP.shoppingCart.setQuantityOfItem(this.item, Number(target.value));
         }
         getContainer() {
             return <HTMLScriptElement>this.target;
@@ -52,7 +53,7 @@ module Cart {
         cartItems: Array<CartItem>;
 
         constructor(target: string) {
-            var params: Spec.Component = {
+            let params: Spec.Component = {
                 attributes: <Spec.ShoppingCart>{
                     items: new Array<Spec.CartItem>(),
                     subtotal: this.getSubtotal.bind(this)
@@ -66,12 +67,12 @@ module Cart {
             this.hide();
         }
         addListener() {
-            var checkoutButton: HTMLScriptElement = Helper.selector(this.target, '[data-control="checkout-button"]');
+            let checkoutButton: HTMLScriptElement = Helper.selector(this.target, '[data-control="checkout-button"]');
 
             checkoutButton.addEventListener('click', this.checkout);
         }
         addToCart(product) {
-            var matches: Array<Spec.CartItem> = this.checkFor(product);
+            let matches: Array<Spec.CartItem> = this.checkFor(product);
 
             /* Increase quantity of item if it is in the cart, otherwise
                add it. */
@@ -84,7 +85,7 @@ module Cart {
                 });
             }
             this.render();
-            Shop.navButtons.updateViewCartButtonDisplay();
+            SHOP.navButtons.updateViewCartButtonDisplay();
             this.hide();
         }
         checkFor(product: Spec.Product) {
@@ -94,12 +95,12 @@ module Cart {
             alert('This is not real.');
         }
         getSubtotal() {
-            var subtotal = this.attributes.items.reduce(this.itemsToSubtotal, 0);
+            let subtotal = this.attributes.items.reduce(this.itemsToSubtotal, 0);
 
             return '$' + subtotal.toFixed(2);
         }
         getTotalNumberOfItems() {
-            var quantity = this.attributes.items.reduce(this.itemsToQuantity, 0);
+            let quantity = this.attributes.items.reduce(this.itemsToQuantity, 0);
 
             return quantity;
         }
@@ -113,7 +114,7 @@ module Cart {
             return previous + current.product.price * current.quantity;
         }
         prepareCartItems() {
-            var i: number,
+            let i: number,
                 tableBody: HTMLScriptElement = Helper.selector(this.target, 'tbody'),
                 views: Array<string> = Helper.generateArray(this.attributes.items.length, this.placeViews.bind(this, 'cart-item-', 'tr'));
 
@@ -127,7 +128,7 @@ module Cart {
             }
         }
         removeItemFromCart(product) {
-            var i: number;
+            let i: number;
 
             for (i = 0; i < this.attributes.items.length; i++) {
                 if (this.attributes.items[i].product.id === product.id) {
@@ -137,7 +138,7 @@ module Cart {
             }
         }
         setQuantityOfItem(product, quantity) {
-            var matches: Array<Spec.CartItem> = this.checkFor(product);
+            let matches: Array<Spec.CartItem> = this.checkFor(product);
 
             if (quantity <= 0) {
                 this.removeItemFromCart(product);
@@ -145,7 +146,7 @@ module Cart {
                 matches[0].quantity = quantity;
             }
             this.render();
-            Shop.navButtons.updateViewCartButtonDisplay();
+            SHOP.navButtons.updateViewCartButtonDisplay();
         }
         render() {
             this.renderContent();

@@ -1,6 +1,6 @@
 /// <reference path="./references.ts"/>
 
-var Shop: App;
+var SHOP: App;
 
 class App {
     navButtons: Navbar.Buttons;
@@ -20,6 +20,6 @@ class App {
 }
 
 Helper.ready(function() {
-    Shop = new App();
+    SHOP = new App();
     Helper.navigateToShop();
 });
