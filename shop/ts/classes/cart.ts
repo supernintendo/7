@@ -37,7 +37,7 @@ module Cart {
         changeQuantity(e: Event) {
             let target: HTMLInputElement = <HTMLInputElement>e.target;
 
-            SHOP.shoppingCart.setQuantityOfItem(this.item, Number(target.value));
+            APP.shoppingCart.setQuantityOfItem(this.item, Number(target.value));
         }
         getContainer() {
             return <HTMLScriptElement>this.target;
@@ -85,7 +85,7 @@ module Cart {
                 });
             }
             this.render();
-            SHOP.navButtons.updateViewCartButtonDisplay();
+            APP.navButtons.updateViewCartButtonDisplay();
             this.hide();
         }
         checkFor(product: Spec.Product) {
@@ -146,7 +146,7 @@ module Cart {
                 matches[0].quantity = quantity;
             }
             this.render();
-            SHOP.navButtons.updateViewCartButtonDisplay();
+            APP.navButtons.updateViewCartButtonDisplay();
         }
         render() {
             this.renderContent();

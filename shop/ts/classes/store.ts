@@ -18,7 +18,7 @@ module Store {
             button.addEventListener('click', this.addToCart.bind(this));
         }
         addToCart() {
-            SHOP.shoppingCart.addToCart(this.attributes);
+            APP.shoppingCart.addToCart(this.attributes);
         }
     }
     export class ProductCategory extends Component.View {
