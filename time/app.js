@@ -1,5 +1,7 @@
 ~function() {
     var inner = document.getElementById('inner-container'),
+        milestone = document.getElementById('milestone-container'),
+        milestones = document.getElementById('milestones'),
         outer = document.getElementById('outer-container'),
         timer = document.getElementById('time'),
         addClass = function(el, className) {
@@ -50,18 +52,33 @@
                 el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
             }
         },
+        showMilestone = function() {
+            var elements = milestones.children,
+                n = Math.floor(Math.random() * elements.length),
+                element = elements[n],
+                time = moment(new Date(Number(element.dataset.time)*1000)).fromNow();
+
+            milestone.innerHTML = time + ', ' + element.innerHTML;
+            removeClass(milestone, 'invisible');
+        },
         shuffleBackground = function() {
-            var n = Math.floor((Math.random() * 4) + 1);
+            var n = Math.floor(Math.random() * 4 + 1);
 
             removeBackgroundClass();
             addClass(outer, getTimeRange() + n);
 
             if (getTimeRange() === 'dusk' || getTimeRange() === 'night') {
+                addClass(milestone, 'invert');
                 addClass(timer, 'invert');
             } else {
+                removeClass(milestone, 'invert');
                 removeClass(timer, 'invert');
             }
             fadeInner();
+        },
+        updateMilestone = function() {
+            addClass(milestone, 'invisible');
+            setTimeout(showMilestone, 425);
         },
         updateTimer = function() {
             var parts = [
@@ -77,7 +94,9 @@
         };
 
     updateTimer();
+    updateMilestone();
     shuffleBackground();
     setInterval(updateTimer, 1000);
+    setInterval(updateMilestone, 12000);
     setInterval(shuffleBackground, 30000);
 }();
