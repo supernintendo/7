@@ -1,0 +1,15 @@
+{
+    "name": "time",
+    "version": "0.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "moment": "2.10.3",
+        "underscore": "1.8.3"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC"
+}

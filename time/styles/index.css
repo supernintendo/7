@@ -1,0 +1,59 @@
+/* Singletons */
+.fixed        { display: fixed; }
+.full-height  { height: 100%; }
+.full-width   { width: 100%; }
+.hide         { display: none; }
+.inline-block { display: inline-block; }
+.large-type   { font-size: 6rem; }
+.medium-type  { font-size: 4.275rem; }
+.no-padding   { padding: 0; }
+.no-margin    { margin: 0; }
+.x-middle     { text-align: center; }
+.y-middle     { vertical-align: middle; }
+
+@font-face {
+    font-family: tritio;
+    src: url(tritio.ttf);
+}
+@font-face {
+    font-family: GOGOIA;
+    src: url(GOGOIA-Deco.otf);
+}
+
+/* Colors */
+.color-one { color: #1D0C20; }
+.color-two { color: #D54B1A; }
+.color-three { color: #651F71;}
+
+/* Display */
+.slow-transition { 
+    -webkit-transition: all 6s ease;
+    -moz-transition:    all 6s ease;
+    -ms-transition:     all 6s ease;
+    -o-transition:      all 6s ease;
+}
+.transparent {
+    opacity: .8;
+}
+
+/* Layout */
+#outer-container {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#time {
+    font-family: tritio, GOGOIA;
+}
+.content {
+    font-family: Helvetica, Arial, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+.inner {
+    background: #68B2F8;
+    display: table-cell;
+}
+.outer {
+    display: table;
+    position: absolute;
+}
