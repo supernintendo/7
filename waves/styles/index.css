@@ -1,0 +1,88 @@
+.orb {
+    height: 128px;
+    width: 128px;
+    position: absolute;
+}
+
+.ring {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    border: 1px solid #000000;
+    -moz-border-radius: 128px;
+    -webkit-border-radius: 128px;
+    -ms-border-radius: 128px;
+    -o-border-radius: 128px;
+    border-radius: 128px;
+}
+
+.orb-radius {
+    position: absolute;
+    width: 34px;
+    height: 128px;
+    left: 46px;
+    top: 0px;
+
+    -moz-animation-name: particle-rotate;
+    -moz-animation-duration: 2.5s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -webkit-animation-name: particle-rotate;
+    -webkit-animation-duration: 2.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-name: particle-rotate;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.particle {
+    position: absolute;
+    left: 0px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    background: #000000;
+    -moz-border-radius: 42px;
+    -webkit-border-radius: 42px;
+    -ms-border-radius: 42px;
+    -o-border-radius: 42px;
+    border-radius: 42px;
+}
+
+@-moz-keyframes particle-rotate {
+    0% {
+        -moz-transform: rotate(0deg)
+    }
+
+    100% {
+        -moz-transform: rotate(360deg)
+    }
+}
+
+@-webkit-keyframes particle-rotate {
+    0% {
+        -webkit-transform: rotate(0deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg)
+    }
+
+}
+
+@keyframes particle-rotate {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+
+}
+
+[data-component] {
+    display: none;
+}
