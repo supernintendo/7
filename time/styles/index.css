@@ -12,11 +12,25 @@
 .third-width  { width: 33%; }
 .x-middle     { text-align: center; }
 .y-middle     { vertical-align: middle; }
+
+.disable-selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 .invert {
     -webkit-filter: invert(100%);
     filter: invert(100%);
 }
 
+/* Fonts */
+@font-face {
+    font-family: Folks;
+    src: url(Folks-Normal.ttf);
+}
 @font-face {
     font-family: tritio;
     src: url(tritio.ttf);
@@ -85,7 +99,7 @@
     text-shadow: 2px 2px #7D6A66;
 }
 .content {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Folks, Avenir, Helvetica, Arial, sans-serif;
     margin-left: auto;
     margin-right: auto;
 }

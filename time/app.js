@@ -97,6 +97,6 @@
     updateMilestone();
     shuffleBackground();
     setInterval(updateTimer, 1000);
-    setInterval(updateMilestone, 12000);
+    setInterval(updateMilestone, 8000);
     setInterval(shuffleBackground, 30000);
 }();
