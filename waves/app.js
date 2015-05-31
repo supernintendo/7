@@ -1,15 +1,14 @@
 ~function() {
     var colors = [
             [[199,237,232], [160,222,214], [69,181,196]],
-            [[176,248,255], [174,232,251], [0,188,209]],
-            [[0,185,189], [0,126,128], [0,72,83]]
+            [[176,248,255], [174,232,251], [0,188,209]]
         ],
         gradient = 0,
         stroke,
         x = 0,
         y = 0,
-        xSpacing = 90,
-        ySpacing = 90,
+        xSpacing = 60,
+        ySpacing = 75,
         template = document.querySelector('#wave-orb').innerHTML,
         viewport = {},
 
@@ -25,7 +24,7 @@
             element.querySelector('.particle').style.background = rgba(stroke, 1);
 
             if (gradient[y]) {
-                element.querySelector('.ring').style.background = rgba(gradient[y], 0.75);
+                element.querySelector('.ring').style.background = rgba(gradient[y], 0.6);
             }
         },
         getGradient = function(samples, rgbTo, rgbFrom) {

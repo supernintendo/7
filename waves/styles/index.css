@@ -24,15 +24,15 @@
     top: 0px;
 
     -moz-animation-name: particle-rotate;
-    -moz-animation-duration: 2.5s;
+    -moz-animation-duration: 2s;
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: linear;
     -webkit-animation-name: particle-rotate;
-    -webkit-animation-duration: 2.5s;
+    -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
     animation-name: particle-rotate;
-    animation-duration: 2.5s;
+    animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
