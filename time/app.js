@@ -56,10 +56,12 @@
             var elements = milestones.children,
                 n = Math.floor(Math.random() * elements.length),
                 element = elements[n],
-                time = moment(new Date(Number(element.dataset.time)*1000)).fromNow();
+                time = moment(new Date(Number(element.dataset.time)*1000)).fromNow(),
+                content = element.innerHTML;
 
-            milestone.innerHTML = time + ', ' + element.innerHTML;
+            milestone.innerHTML = time + ', ' + content;
             removeClass(milestone, 'invisible');
+            setTimeout(updateMilestone, content.length * 25 * 4 + 600);
         },
         shuffleBackground = function() {
             var n = Math.floor(Math.random() * 4 + 1);
@@ -97,6 +99,5 @@
     updateMilestone();
     shuffleBackground();
     setInterval(updateTimer, 1000);
-    setInterval(updateMilestone, 8000);
     setInterval(shuffleBackground, 30000);
 }();
