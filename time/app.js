@@ -4,6 +4,10 @@
         milestones = document.getElementById('milestones'),
         outer = document.getElementById('outer-container'),
         timer = document.getElementById('time'),
+        timeouts = {
+            milestoneShow: null,
+            milestoneUpdate: null
+        },
         addClass = function(el, className) {
             if (el.classList) {
                 el.classList.add(className);
@@ -61,7 +65,7 @@
 
             milestone.innerHTML = time + ', ' + content;
             removeClass(milestone, 'invisible');
-            setTimeout(updateMilestone, content.length * 25 * 4 + 600);
+            timeouts.milestoneUpdate = setTimeout(updateMilestone, content.length * 25 * 4 + 600);
         },
         shuffleBackground = function() {
             var n = Math.floor(Math.random() * 4 + 1);
@@ -79,8 +83,10 @@
             fadeInner();
         },
         updateMilestone = function() {
+            clearTimeout(timeouts.milestoneShow);
+            clearTimeout(timeouts.milestoneUpdate);
             addClass(milestone, 'invisible');
-            setTimeout(showMilestone, 425);
+            timeouts.milestoneShow = setTimeout(showMilestone, 425);
         },
         updateTimer = function() {
             var parts = [
@@ -100,4 +106,5 @@
     shuffleBackground();
     setInterval(updateTimer, 1000);
     setInterval(shuffleBackground, 30000);
+    milestone.addEventListener('click', updateMilestone);
 }();
