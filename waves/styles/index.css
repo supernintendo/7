@@ -17,6 +17,16 @@ html {
     -ms-border-radius: 128px;
     -o-border-radius: 128px;
     border-radius: 128px;
+
+    -moz-animation-name: ring-pulse;
+    -moz-animation-duration: 4s;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-name: ring-pulse;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: ring-pulse;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
 }
 
 .orb-radius {
@@ -84,6 +94,42 @@ html {
         transform: rotate(360deg)
     }
 
+}
+
+@-webkit-keyframes ring-pulse {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+@-moz-keyframes ring-pulse {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes ring-pulse {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.8;
+    }
 }
 
 [data-component] {

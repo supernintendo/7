@@ -8,7 +8,7 @@
             [[2, 170, 176], [0, 205, 172], [127, 255, 36]]
         ],
         gradient = 0,
-        interval = Math.floor(Math.random() * 120) + 40,
+        interval = Math.floor(Math.random() * 120),
         stroke,
         x = 0,
         y = 0,
@@ -54,7 +54,7 @@
             ];
         },
         getRandomColors = function() {
-            return colors[Math.floor((Math.random() * colors.length))];
+            return colors[Math.floor((Math.random() * colors.length))] || colors[0];
         },
         rgba = function(colors, alpha) {
             return 'rgba(' + colors.join(',') + ', ' + alpha + ')';
