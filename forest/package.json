@@ -1,0 +1,12 @@
+{
+    "name": "forest",
+    "author": "supernintendo",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "d3": "3.5.5"
+    },
+    "scripts": {
+        "build": "mkdir -p build && coffee --compile --stdio <src/app.coffee >build/index.js"
+    }
+}
