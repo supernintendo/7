@@ -106,12 +106,12 @@ randomTree = ->
         branchColor: greens[Math.floor(Math.random() * greens.length - 1)]
         branchLength: Math.random() * 40
         branchWidth: Math.random() * 20 + 5
-        divergence: Math.random() * 4
+        divergence: Math.random() * -0.5 * 2
         ease: eases[Math.floor(Math.random() * eases.length)]
         growSpeed: Math.random() * 1200 + 100
         stumpColor: browns[Math.floor(Math.random() * browns.length - 1)]
         stumpWidth: Math.random() * 20 + 5
-        totalLength: Math.random() * 8 + 2
+        totalLength: Math.random() * 8 + 5
         x: Math.random() * window.innerWidth
         y: Math.random() * window.innerHeight
 
