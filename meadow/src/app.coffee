@@ -108,7 +108,7 @@ randomTree = ->
         branchAngle: Math.random() * 90 * -1
         branchColor: greens[Math.floor(Math.random() * greens.length - 1)]
         branchLength: Math.random() * 40
-        branchWidth: Math.random() * 20 + 5
+        branchWidth: Math.random() * 5 + 1
         divergence: Math.random() * -0.5 * 2
         ease: eases[Math.floor(Math.random() * eases.length)]
         growSpeed: Math.random() * 1200 + 100
