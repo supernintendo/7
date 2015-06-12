@@ -24,6 +24,7 @@ class Tree
             x2: lastBranch.x2 + (@spec.branchLength * Math.cos(Math.PI * @spec.branchAngle/180)) * direction
             y2: lastBranch.y2 + @spec.branchLength * Math.sin(Math.PI * @spec.branchAngle/180)
             color: @spec.branchColor
+            lineCap: 'round'
             width: @spec.branchWidth
             speed: @spec.growSpeed
             ease: @spec.ease
@@ -45,6 +46,7 @@ class Tree
             .attr 'x2', branch.x
             .attr 'y2', branch.y
             .attr 'stroke', branch.color
+            .attr 'stroke-linecap', branch.lineCap
             .attr 'stroke-width', branch.width
             .transition()
             .duration branch.speed
@@ -65,8 +67,9 @@ class Tree
             x: @spec.x
             y: @spec.y
             x2: @spec.x
-            y2: @spec.y - 40
+            y2: @spec.y - 60
             color: @spec.stumpColor
+            lineCap: 'square'
             width: @spec.stumpWidth
             speed: @spec.growSpeed
             ease: 'cubic'
