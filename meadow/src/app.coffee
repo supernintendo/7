@@ -103,7 +103,7 @@ greens = [
     '#264D34'
 ]
 treeCount = 0
-randomTree = ->
+randomTree = (x, y) ->
     tree =
         branchAngle: Math.random() * 90 * -1
         branchColor: greens[Math.floor(Math.random() * greens.length - 1)]
@@ -115,14 +115,18 @@ randomTree = ->
         stumpColor: browns[Math.floor(Math.random() * browns.length - 1)]
         stumpWidth: Math.random() * 20 + 5
         totalLength: Math.random() * 8 + 5
-        x: Math.random() * window.innerWidth
-        y: Math.random() * window.innerHeight
+        x: x
+        y: y
 
 # Grow trees
 container = new Container
+x_poses = [1..30].map (i) -> Math.random() * window.innerWidth
+y_poses = [1..30].map (i) -> Math.random() * window.innerHeight
+y_poses = y_poses.sort (a, b) -> a - b
+
 setInterval =>
     if treeCount < 30
-        tree = new Tree(container, randomTree())
+        tree = new Tree(container, randomTree(x_poses[treeCount], y_poses[treeCount]))
         tree.grow tree.stump()
         treeCount += 1
 , 100
