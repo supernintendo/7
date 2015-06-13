@@ -89,10 +89,7 @@ eases = [
     'linear',
     'quad',
     'cubic',
-    'sin',
-    'exp',
-    'circle',
-    'bounce'
+    'exp'
 ]
 treeCount = 0
 randomTree = (x, y) ->
