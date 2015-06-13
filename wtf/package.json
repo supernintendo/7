@@ -4,7 +4,8 @@
     "license": "MIT",
     "private": true,
     "dependencies": {
-        "d3": "3.5.5"
+        "d3": "3.5.5",
+        "randomcolor": "0.2.0"
     },
     "scripts": {
         "build": "mkdir -p build && coffee --compile --stdio <src/app.coffee >build/index.js"

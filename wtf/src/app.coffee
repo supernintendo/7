@@ -16,14 +16,15 @@ class Tree
     constructor: (@container, @spec) ->
         @branches = []
         @counter = 0
+        @done = false
 
     branchFrom: (lastBranch, direction) ->
         branch =
             x: lastBranch.x2
             y: lastBranch.y2
-            x2: lastBranch.x2 + (@spec.branchLength * Math.cos(Math.PI * @spec.branchAngle/180)) * direction
-            y2: lastBranch.y2 + @spec.branchLength * Math.sin(Math.PI * @spec.branchAngle/180)
-            color: @spec.branchColor
+            x2: lastBranch.x2 - (@spec.branchLength * Math.cos(Math.PI * @spec.branchAngle/180)) * direction
+            y2: lastBranch.y2 - @spec.branchLength * Math.sin(Math.PI * @spec.branchAngle/180)
+            color: randomColor()
             lineCap: 'round'
             width: @spec.branchWidth
             speed: @spec.growSpeed
@@ -35,6 +36,10 @@ class Tree
             @grow @branchFrom(lastBranch, @spec.divergence * -1)
             @counter += 1
             @spec.branchAngle -= 15
+        else
+            if not @done
+                growTree()
+                @done = true
 
     drawBranch: (index) ->
         branch = @branches[index]
@@ -48,6 +53,7 @@ class Tree
             .attr 'y2', branch.y
             .attr 'stroke', branch.color
             .attr 'stroke-linecap', branch.lineCap
+            .attr 'stroke-linejoin', 'round'
             .attr 'stroke-width', branch.width
             .transition()
             .duration branch.speed
@@ -69,7 +75,7 @@ class Tree
             y: @spec.y
             x2: @spec.x
             y2: @spec.y - 60
-            color: @spec.stumpColor
+            color: randomColor()
             lineCap: 'square'
             width: @spec.stumpWidth
             speed: @spec.growSpeed
@@ -79,12 +85,6 @@ class Tree
 x_poses = []
 y_poses = []
 
-browns = [
-    '#49281F',
-    '#564334',
-    '#594433',
-    '#A68C69'
-]
 eases = [
     'linear',
     'quad',
@@ -94,40 +94,25 @@ eases = [
     'circle',
     'bounce'
 ]
-greens = [
-    '#9E9A41',
-    '#758918',
-    '#9BA657',
-    '#808F12',
-    '#2A5C0B',
-    '#042608',
-    '#C0D878',
-    '#A8C060',
-    '#547239',
-    '#264D34'
-]
 treeCount = 0
 randomTree = (x, y) ->
     tree =
-        branchAngle: Math.random() * 90 * -1
-        branchColor: greens[Math.floor(Math.random() * greens.length - 1)]
-        branchLength: Math.random() * 40
-        branchWidth: Math.random() * 8 + 10
+        branchAngle: Math.random() * 40 * -1 + 45
+        branchLength: Math.random() * 180
+        branchWidth: 1
         divergence: 1
         ease: eases[Math.floor(Math.random() * eases.length)]
-        growSpeed: Math.random() * 1200 + 100
-        stumpColor: browns[Math.floor(Math.random() * browns.length - 1)]
-        stumpWidth: Math.random() * 20 + 5
-        totalLength: Math.random() * 8 + 5
+        growSpeed: Math.random() * 1000 + 50
+        stumpWidth: 1
+        totalLength: Math.random() * 300 + 30
         x: x
         y: y
 
 growTree = ->
-    if treeCount < 30
+    if treeCount < 10
         tree = new Tree(container, randomTree(x_poses[treeCount], y_poses[treeCount]))
         tree.grow tree.stump()
         treeCount += 1
-        setTimeout growTree, 100
 
 reset = ->
     branches = document.getElementsByClassName 'branch'
@@ -136,8 +121,8 @@ reset = ->
 
 startGrowing = ->
     container.resizeContainer()
-    x_poses = [1..30].map (i) -> Math.random() * window.innerWidth
-    y_poses = [1..30].map (i) -> Math.random() * window.innerHeight
+    x_poses = [1..4].map (i) -> Math.random() * window.innerWidth
+    y_poses = [1..4].map (i) -> Math.random() * window.innerHeight + 120
     y_poses = y_poses.sort (a, b) -> a - b
     treeCount = 0
     growTree()
@@ -147,3 +132,4 @@ window.addEventListener 'resize', reset
 # Grow trees
 container = new Container
 startGrowing()
+setInterval reset, 8000
