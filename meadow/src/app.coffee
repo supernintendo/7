@@ -41,6 +41,7 @@ class Tree
 
         @container.surface
             .append 'line'
+            .attr 'class', 'branch'
             .attr 'x1', branch.x
             .attr 'y1', branch.y
             .attr 'x2', branch.x
@@ -75,6 +76,9 @@ class Tree
             ease: 'cubic'
         stump
 
+x_poses = []
+y_poses = []
+
 browns = [
     '#49281F',
     '#564334',
@@ -108,8 +112,8 @@ randomTree = (x, y) ->
         branchAngle: Math.random() * 90 * -1
         branchColor: greens[Math.floor(Math.random() * greens.length - 1)]
         branchLength: Math.random() * 40
-        branchWidth: Math.random() * 18 + 10
-        divergence: Math.random() * -0.5 * 2
+        branchWidth: Math.random() * 8 + 10
+        divergence: 1
         ease: eases[Math.floor(Math.random() * eases.length)]
         growSpeed: Math.random() * 1200 + 100
         stumpColor: browns[Math.floor(Math.random() * browns.length - 1)]
@@ -118,15 +122,28 @@ randomTree = (x, y) ->
         x: x
         y: y
 
-# Grow trees
-container = new Container
-x_poses = [1..30].map (i) -> Math.random() * window.innerWidth
-y_poses = [1..30].map (i) -> Math.random() * window.innerHeight
-y_poses = y_poses.sort (a, b) -> a - b
-
-setInterval =>
+growTree = ->
     if treeCount < 30
         tree = new Tree(container, randomTree(x_poses[treeCount], y_poses[treeCount]))
         tree.grow tree.stump()
         treeCount += 1
-, 100
+        setTimeout growTree, 100
+
+reset = ->
+    branches = document.getElementsByClassName 'branch'
+    branches[0].parentElement.removeChild(branches[0]) while branches[0]
+    startGrowing()
+
+startGrowing = ->
+    container.resizeContainer()
+    x_poses = [1..30].map (i) -> Math.random() * window.innerWidth
+    y_poses = [1..30].map (i) -> Math.random() * window.innerHeight
+    y_poses = y_poses.sort (a, b) -> a - b
+    treeCount = 0
+    growTree()
+
+window.addEventListener 'resize', reset
+
+# Grow trees
+container = new Container
+startGrowing()
