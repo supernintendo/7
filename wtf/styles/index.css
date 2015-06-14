@@ -6,4 +6,44 @@ html, body {
     margin: 0;
 
     overflow: hidden;
+
+    -webkit-animation: rainbow 6s infinite;
+    -moz-animation:    rainbow 6s infinite;
+    -o-animation:      rainbow 6s infinite;
+    animation:         rainbow 6s infinite;
+
+    -webkit-filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
+}
+
+/* Chrome, Safari, Opera */ 
+@-webkit-keyframes rainbow {
+    0% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    50%  {
+        -webkit-filter: hue-rotate(360deg);
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+}
+
+/* Standard syntax */
+@keyframes rainbow {
+    0% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    50%  {
+        -webkit-filter: hue-rotate(360deg);
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
 }

@@ -99,14 +99,14 @@ randomTree = (x, y) ->
         branchWidth: 1
         divergence: 1
         ease: eases[Math.floor(Math.random() * eases.length)]
-        growSpeed: Math.random() * 1000 + 50
+        growSpeed: Math.random() * 500 + 100
         stumpWidth: 1
-        totalLength: Math.random() * 300 + 30
+        totalLength: Math.random() * 100 + 200
         x: x
         y: y
 
 growTree = ->
-    if treeCount < 10
+    if treeCount < 2
         tree = new Tree(container, randomTree(x_poses[treeCount], y_poses[treeCount]))
         tree.grow tree.stump()
         treeCount += 1
@@ -118,8 +118,8 @@ reset = ->
 
 startGrowing = ->
     container.resizeContainer()
-    x_poses = [1..4].map (i) -> Math.random() * window.innerWidth
-    y_poses = [1..4].map (i) -> Math.random() * window.innerHeight + 120
+    x_poses = [1..2].map (i) -> Math.random() * window.innerWidth
+    y_poses = [1..2].map (i) -> Math.random() * window.innerHeight + 120
     y_poses = y_poses.sort (a, b) -> a - b
     treeCount = 0
     growTree()
