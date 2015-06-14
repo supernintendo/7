@@ -85,12 +85,6 @@ class Tree
 x_poses = []
 y_poses = []
 
-eases = [
-    'linear',
-    'quad',
-    'cubic',
-    'exp'
-]
 treeCount = 0
 randomTree = (x, y) ->
     tree =
@@ -98,8 +92,8 @@ randomTree = (x, y) ->
         branchLength: Math.random() * 180
         branchWidth: 1
         divergence: 1
-        ease: eases[Math.floor(Math.random() * eases.length)]
-        growSpeed: Math.random() * 500 + 100
+        ease: 'linear'
+        growSpeed: Math.random() * 400 + 400
         stumpWidth: 1
         totalLength: Math.random() * 100 + 200
         x: x
