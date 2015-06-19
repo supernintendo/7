@@ -20,4 +20,4 @@
   (do
     (swap! app-state assoc :initialized? true)))
 
-(data/fetch data/fetched)
+(data/fetch "http://content.guardianapis.com/search" data/pull-out-urls)

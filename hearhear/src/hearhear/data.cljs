@@ -1,14 +1,24 @@
 (ns ^:figwheel-always hearhear.data
     (:import [goog.net XhrIo]))
 
-(def root-url "http://content.guardianapis.com/search")
 (def api-key "tpb65u2aqd68vpprkv6r3umh")
 
-(defn fetch-string []
-  (str root-url "?api-key=" api-key))
+(defn fetch-string [url]
+  (str url "?api-key=" api-key))
 
-(defn fetch [callback]
-  (.send goog.net.XhrIo (fetch-string) callback))
+(defn fetch [url callback]
+  (.send goog.net.XhrIo (fetch-string url) callback))
 
-(defn fetched [response]
-  (.log js/console (.getResponseJson (.-target response))))
+(defn store-content [response]
+  (print response))
+
+(defn parse-response [response]
+  (.-response
+   (.getResponseJson
+    (.-target response))))
+
+(defn pull-out-urls [response]
+  (doseq [item (js->clj
+                (.-results
+                 (parse-response response)))]
+    (fetch (get item "apiUrl") store-content)))
