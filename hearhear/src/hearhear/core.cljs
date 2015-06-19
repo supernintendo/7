@@ -1,6 +1,7 @@
 (ns ^:figwheel-always hearhear.core
     (:require [om.core :as om :include-macros true]
               [om.dom :as dom :include-macros true]
+              [hearhear.data :as data]
               [hearhear.words :as words]))
 
 (enable-console-print!)
@@ -18,3 +19,5 @@
 (if-not (get @app-state :initialized?)
   (do
     (swap! app-state assoc :initialized? true)))
+
+(data/fetch data/fetched)

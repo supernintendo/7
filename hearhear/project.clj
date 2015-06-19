@@ -21,7 +21,7 @@
     :builds [{:id "dev"
               :source-paths ["src"]
 
-              :figwheel { :on-jsload "hearhear.core/on-js-reload" }
+              :figwheel true
 
               :compiler {:main hearhear.core
                          :asset-path "js/compiled/out"
