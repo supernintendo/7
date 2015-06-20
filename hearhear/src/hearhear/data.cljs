@@ -14,8 +14,17 @@
    (.getResponseJson
     (.-target response))))
 
+(defn strip-html-tags [content]
+  (clojure.string/replace content #"<[^>]*>" ""))
+
 (defn store-content [response]
-  (.log js/console (parse-response response)))
+  (.log js/console
+        (strip-html-tags
+         (.-body
+          (.-fields
+           (.-content
+            (parse-response
+             response)))))))
 
 (defn pull-out-urls [response]
   (doseq [item (js->clj
