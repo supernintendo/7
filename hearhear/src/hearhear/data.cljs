@@ -3,22 +3,27 @@
 
 (def api-key "tpb65u2aqd68vpprkv6r3umh")
 
-(defn fetch-string [url]
-  (str url "?api-key=" api-key))
+(defn param-string [key value]
+  (str "&" key "=" value))
 
 (defn fetch [url callback]
-  (.send goog.net.XhrIo (fetch-string url) callback))
-
-(defn store-content [response]
-  (print response))
+  (.send goog.net.XhrIo url callback))
 
 (defn parse-response [response]
   (.-response
    (.getResponseJson
     (.-target response))))
 
+(defn store-content [response]
+  (.log js/console (parse-response response)))
+
 (defn pull-out-urls [response]
   (doseq [item (js->clj
                 (.-results
                  (parse-response response)))]
-    (fetch (get item "apiUrl") store-content)))
+    (fetch
+     (str
+      (get item "apiUrl")
+      "?"
+      (param-string "api-key" api-key)
+      (param-string "show-fields" "body")) store-content)))

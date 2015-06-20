@@ -20,4 +20,8 @@
   (do
     (swap! app-state assoc :initialized? true)))
 
-(data/fetch "http://content.guardianapis.com/search" data/pull-out-urls)
+(data/fetch
+ (str
+  "http://content.guardianapis.com/search?"
+  (data/param-string "api-key" data/api-key))
+ data/pull-out-urls)
