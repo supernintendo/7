@@ -23,5 +23,6 @@
 (data/fetch
  (str
   "http://content.guardianapis.com/search?"
-  (data/param-string "api-key" data/api-key))
+  (data/param-string "api-key" data/api-key)
+  (data/param-string "section" "us-news"))
  data/pull-out-urls)
