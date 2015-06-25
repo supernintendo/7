@@ -10,6 +10,21 @@ var colorPalette = function(count, luminosity) {
                 .concat(colorPalette(29, 'light'))
                 .concat(colorPalette(29, 'dark'))
     ),
+    loadArt = function(artMap) {
+        var i, k = Object.keys(artMap);
+
+        for (i = 0; i < k.length; i++) {
+            document.querySelector('[data-reactid="' + k[i] + '"]').style.backgroundColor = artMap[k[i]];
+        }
+    },
+    saveArt = function() {
+        var i, artMap = {}, nodes = document.querySelectorAll('.pixel-cell');
+
+        for (i = 0; i < nodes.length; i++) {
+            artMap[nodes[i].dataset.reactid] = nodes[i].style.backgroundColor;
+        }
+        return artMap;
+    },
     activeColor = colors[0],
     mouseDown = false,
     width = 24,
@@ -62,6 +77,7 @@ var colorPalette = function(count, luminosity) {
     Editor = React.createClass({
         render: function() {
             var i, nodes = [];
+
             for (i = 0; i < this.props.colors.length; i++) {
                 nodes.push(<ColorCell color={this.props.colors[i]} />);
             }
@@ -78,6 +94,7 @@ var colorPalette = function(count, luminosity) {
     Row = React.createClass({
         render: function() {
             var i, nodes = [];
+
             for (i = 0; i < this.props.width; i++) {
                 nodes.push(<Cell />);
             }
@@ -97,6 +114,7 @@ var colorPalette = function(count, luminosity) {
         },
         render: function() {
             var i, nodes = [];
+
             for (i = 0; i < this.props.height; i++) {
                 nodes.push(<Row width={this.props.width} />);
             }
