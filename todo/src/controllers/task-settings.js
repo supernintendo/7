@@ -7,6 +7,7 @@ module.exports = (function() {
         // Mark a task as done.
         vm.completeTask = function(task) {
             task.done = true;
+            task.playing = false;
         };
 
         // Check if the task has a label and return the appropriate state.

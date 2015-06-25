@@ -26,6 +26,14 @@
             </div>
         </div>
 
+        <div class="container help-tip">
+            <ul>
+                <li>Add a thing.</li>
+                <li>Click a thing's name to rename it.</li>
+                <li>Type some text in the input to filter things by name.</li>
+            </ul>
+        </div>
+
         <!-- Controls -->
         <div class="container main-controls">
             <button class="btn btn-sm btn-info add-task-button" ng-click="main.addTask()">
@@ -39,7 +47,7 @@
         <!-- Task list -->
         <div class="container">
             <ul class="list-group">
-                <li class="list-group-item" ng-hide="task.hidden" ng-repeat="task in main.tasks">
+                <li class="list-group-item" ng-hide="task.hidden" ng-repeat="task in main.tasks | orderBy:'done'">
                     <div class="task-name">
                         <span class="glyphicon glyphicon-ok" ng-show="task.done"></span>
                         <span ng-click="main.editTaskName(task)" ng-hide="task.editing">{{task.name}}</span>
@@ -53,10 +61,10 @@
                         <div class="task-timer" ng-controller="TimerController as timer">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm">{{task.timeString}}</button>
-                                <button ng-click="timer.resumeTask(task)" ng-hide="task.playing" type="button" class="btn btn-sm">
+                                <button ng-click="timer.resumeTask(task)" ng-hide="task.playing || task.done" type="button" class="btn btn-sm">
                                     <span class="glyphicon glyphicon-play"></span>
                                 </button>
-                                <button ng-click="timer.pauseTask(task)" ng-show="task.playing" type="button" class="btn btn-sm btn-info">
+                                <button ng-click="timer.pauseTask(task)" ng-show="task.playing && !task.done" type="button" class="btn btn-sm btn-info">
                                     <span class="glyphicon glyphicon-pause"></span>
                                 </button>
                             </div>
@@ -113,10 +121,5 @@
                 </li>
             </ul>
         </div>
-
-        <!-- Footer -->
-        <ol class="breadcrumb footer">
-            <li><a href="https://github.com/supernintendo" target="_blank">Source</a></li>
-        </ol>
     </body>
 </html>

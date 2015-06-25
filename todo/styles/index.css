@@ -78,7 +78,10 @@ input.menu-input {
     display: inline-block;
     width: 24rem;
 }
-.list-filters { display: inline-block; }
+.list-filters {
+    display: inline-block;
+    float: right;
+}
 .list-filters > input {
     display: inline-block;
     width: 24rem;
@@ -93,7 +96,8 @@ input.menu-input {
 .list-group-item .col-sm-8 { margin-bottom: 1.66rem; }
 .main-controls {
     padding-bottom: 1.5rem;
-    text-align: center;
+    text-align: left;
+    width: 50%;
 }
 .task-controls { float: right; }
 .task-controls button { font-size: 1.35rem; }
@@ -138,4 +142,11 @@ input.menu-input {
     float: right;
     line-height: 3rem;
     padding-right: 1rem;
+}
+.help-tip > ul {
+    list-style-type: none;
+    padding: 0 0 20px 0;
+    margin: 0px;
+    font-size: 14px;
+    text-align: center;
 }

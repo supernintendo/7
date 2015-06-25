@@ -2,17 +2,63 @@ module.exports = (function() {
     var TaskService = function() {
         var _tasks = [],
             counter = 0,
-            randomNames = [
-                'Do science',
-                'Draw something',
-                'Exercise',
-                'Read a new article',
-                'Read a new book',
-                'Ride a bicycle',
-                'Travel to a new place',
-                'Write a blog post',
-                'Write code',
-                'Write music'
+            names = [
+                "Hey,",
+                "thanks",
+                "for",
+                "checking",
+                "this",
+                "out",
+                "but",
+                "I",
+                "have",
+                "one",
+                "question,",
+                "which",
+                "is,",
+                "why",
+                "are",
+                "you",
+                "checking",
+                "this",
+                "out?",
+                "It",
+                "is",
+                "simply",
+                "a",
+                "todo",
+                "list",
+                "built",
+                "in",
+                "Angular",
+                "and",
+                "nothing",
+                "more.",
+                "There",
+                "are",
+                "plenty",
+                "of",
+                "more",
+                "interesting",
+                "things",
+                "on",
+                "the",
+                "Internet",
+                "you",
+                "could",
+                "be",
+                "looking",
+                "at.",
+                "You",
+                "must",
+                "really",
+                "love",
+                "me.",
+                "I",
+                "love",
+                "you",
+                "too.",
+                "😘"
             ];
 
         // Create a new task.
@@ -25,7 +71,7 @@ module.exports = (function() {
                 labels: [],
                 id: counter,
                 money: 0,
-                name: this.randomName(),
+                name: names[counter % names.length],
                 playing: false,
                 timeString: '00:00'
             });
@@ -51,10 +97,6 @@ module.exports = (function() {
             _tasks.forEach(function(task) {
                 task.editing = false;
             }, this);
-        };
-
-        this.randomName = function() {
-            return randomNames[Math.floor(Math.random() * randomNames.length)];
         };
     };
 

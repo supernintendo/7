@@ -15,8 +15,12 @@ module.exports = (function() {
 
             task.playing = true;
             _timerPromise = $interval(function() {
-                task.accumulatedTime += 1000;
-                vm.updateTimeString(task);
+                if (!task.playing) {
+                    vm.pauseTask(task);
+                } else {
+                    task.accumulatedTime += 1000;
+                    vm.updateTimeString(task);
+                }
             }, 1000);
         };
         vm.updateTimeString = function(task) {
