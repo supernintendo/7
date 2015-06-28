@@ -97,7 +97,7 @@ input.menu-input {
 .main-controls {
     padding-bottom: 1.5rem;
     text-align: left;
-    width: 50%;
+    width: 400px;
 }
 .task-controls { float: right; }
 .task-controls button { font-size: 1.35rem; }
