@@ -3,33 +3,53 @@
 @import "font-awesome/font-awesome.css"
 
 body
-	background-color: #ECF1F2
+  background-color: #ECF1F2
 
 h2
-	text-align: center
-	font-size: 22px
+  text-align: center
+  font-size: 22px
 
 p
-	text-align: center
-	font-size: 16px
+  text-align: center
+  font-size: 16px
 
 div.draggable
-	cursor: move
-	height: 1px
-	width: 1px
-	top: .4rem
-	position: absolute
-	
+  cursor: move
+  height: 1px
+  width: 1px
+  top: .4rem
+  position: absolute
+
+	&.disabled
+    cursor: default
+    opacity: .5
+
+	&.disabled:hover
+    cursor: pointer
+    opacity: .8
+
 div.controls
-	background-color: #CBDBE0
-	padding: .4rem
-	position: fixed
-	width: 100%
-	z-index: 925
+  background-color: #CBDBE0
+  padding: .4rem
+  position: fixed
+  width: 100%
+  z-index: 925
+
+div.note
+  background-color: #FDEECD
+  border: 1px solid #EAB05E
+  position: absolute
+
+  button
+    font-size: 12px
+
+div.note.being-edited
+  span.contents
+    display: none
 
 button.button-secondary
-	background-color: #DDAEFF
-	color: #8156A7
+  background-color: #DDAEFF
+  color: #8156A7
 
 span.spacing
-	padding-left: 4px
+  padding-left: 4px

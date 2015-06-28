@@ -34,7 +34,6 @@ class Ws extends Spine.Controller
     try
       parsed = JSON.parse(message.data)
     catch e
-      @log message
     finally
       @deal_with parsed if parsed
 

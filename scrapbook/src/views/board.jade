@@ -1,29 +1,30 @@
 div.controls
   //- Visibility
-  if status == "connected"
-    button.pure-button.button-secondary
-      i.fa.fa-eye
-    span.spacing
-  else if status == "loading"
-    button.pure-button.button-secondary
+  if status == "loading"
+    button.pure-button
       i.fa.fa-spinner.fa-spin
     span.spacing
-  else
+  else if status != "connected"
     button.ctrl-reconnect.pure-button.button
       i.fa.fa-plug
     span.spacing
   end
 
   if status == "connected"
+    // Edit button
+    button.ctrl-edit.pure-button.pure-button-primary
+      i.fa.fa-pencil
+    span.spacing
+    
     // Add note button
-    button.ctrl-add-note.pure-button.pure-button-primary
+    button.ctrl-add.ctrl-add-note.pure-button.pure-button-primary
       i.fa.fa-plus
       span.spacing
       i.fa.fa-file-text-o
     span.spacing
 
     // Add graphic button
-    button.ctrl-add-graphic.pure-button.pure-button-primary
+    button.ctrl-add.ctrl-add-graphic.pure-button.pure-button-primary
       i.fa.fa-plus
       span.spacing
       i.fa.fa-picture-o

@@ -6,25 +6,27 @@ class Draggable extends Spine.Controller
   className: 'draggable'
   constructor: ->
     super
+    @render()
+    @make_draggable @el
+    @addListeners()
 
   render: ->
     type = @entity.constructor.className
     template = require('views/graphic') if type == "Graphic"
     template = require('views/note') if type == "Note"
     @el = @html template(entity: @entity)
-    @make_draggable @el
-    @listenTo(@entity, 'update', @proxy(@redraw))
-    @el
+
+  addListeners: ->
+    @listenTo(@entity, 'persist', @proxy(@persist))
+    @listenTo(@entity, 'update', @proxy(@redraw))    
 
   dragend: (event) ->
     target = $ event.currentTarget
     new_pos =
       x: parseFloat(target.css 'left')
       y: parseFloat(target.css 'top')
-
     @entity.updateAttributes new_pos
-    request = @requestUpdateObject @entity
-    WsMessage.create(request)
+    @entity.trigger 'persist'
 
   make_draggable: (el) ->
     el.draggabilly({})
@@ -33,7 +35,12 @@ class Draggable extends Spine.Controller
       top: @entity.y
     el.on('dragEnd', @proxy(@dragend))
 
+  persist: ->
+    request = @requestUpdateObject @entity
+    WsMessage.create(request)
+
   redraw: ->
+    @render()
     new_pos = 
       left: @entity.x
       top: @entity.y

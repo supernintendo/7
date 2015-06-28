@@ -109,6 +109,7 @@ helpers do
   end
 
   def update_entity(id, attributes)
+    puts "updated #{id} #{attributes}"
     changes = attributes
     changes.delete 'id'
     target = settings.entities[id]
