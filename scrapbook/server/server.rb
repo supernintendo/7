@@ -50,9 +50,12 @@ end
 helpers do
   def all_entities
     # Respond with all entities
-    settings.entities.map{ | key, entity|
+    response = {}
+    response[:entities] = settings.entities.map{ | key, entity|
       [key, entity.serialize]
-    }.to_h.to_json
+    }.to_h
+    response[:action] = 'index'
+    response.to_json
   end
 
   def create_entity(class_name)
@@ -74,13 +77,25 @@ helpers do
       target = parsed['target']
 
       if target == 'board'
-        create_entity(parsed['value']) if action == 'create'
+        response = create_entity(parsed['value']) if action == 'create'
       elsif settings.entities.has_key?(target)
-        update_entity(target, parsed['value']) if action == 'update'
+        response = delete_entity(target) if action == 'destroy'
+        response = update_entity(target, parsed['value']) if action == 'update'
       end
     else
-      "bad_message"
+      response = "bad message"
     end
+    response
+  end
+
+  def delete_entity(target)
+    response = {
+      action: 'delete',
+      id: target,
+      type: settings.entities[target].class.name,
+    }
+    settings.entities.delete(target)
+    response.to_h.to_json
   end
 
   # Validate an incoming message
@@ -103,8 +118,11 @@ helpers do
   end
 
   def respond_with_entity(entity, id)
-    response = {}
-    response[id] = entity.serialize
+    response = {
+      action: 'update',
+      entities: {}
+    }
+    response[:entities][id] = entity.serialize
     response.to_h.to_json
   end
 

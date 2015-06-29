@@ -20,13 +20,25 @@ div.draggable
   top: .4rem
   position: absolute
 
-	&.disabled
+div.delete
+  visibility: hidden
+
+.editing
+  .delete, .graphic, .note
     cursor: default
     opacity: .5
 
-	&.disabled:hover
+  .delete:hover, .graphic:hover, .note:hover
+    -webkit-transition: all 0.2s ease
+    -moz-transition:    all 0.2s ease
+    -ms-transition:     all 0.2s ease
+    -o-transition:      all 0.2s ease
+
     cursor: pointer
     opacity: .8
+
+  .delete
+    visibility: visible
 
 div.controls
   background-color: #CBDBE0
@@ -53,3 +65,19 @@ button.button-secondary
 
 span.spacing
   padding-left: 4px
+
+div.delete
+  background: black
+  border-radius: 50%
+  color: white
+  font-size: 10px
+  position: absolute
+  top: -8px
+  right: -10px
+  text-align: center
+  width: 16px
+  height: 16px
+
+  i
+    position: relative
+    top: 1px

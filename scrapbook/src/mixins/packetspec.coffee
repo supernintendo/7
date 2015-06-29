@@ -13,4 +13,10 @@ PacketSpec =
       value: instance
     spec
 
+  requestDeleteObject: (id) ->
+    spec =
+      action: 'destroy',
+      target_id: id
+    spec
+
 module.exports = PacketSpec

@@ -49,22 +49,20 @@ class Board extends Spine.Controller
     @addButtons.hide()
     for element in @draggables.children()
       $(element).draggabilly 'disable'
-      $(element).addClass 'disabled'
 
   enableDragging: ->
     @addButtons.show()
     for element in @draggables.children()
       $(element).draggabilly 'enable'
-      $(element).removeClass 'disabled'
 
   graphicClicked: (event) ->
     if @editing
       graphic = Graphic.find $(event.currentTarget).data('id')
-      value = prompt "enter the url of an image to be displayed", $(event.currentTarget).text()
+      value = prompt 'enter the url of an image to be displayed', $(event.currentTarget).text()
 
       if value
-        graphic.updateAttribute "image", value
-        graphic.trigger "persist"
+        graphic.updateAttribute 'image', value
+        graphic.trigger 'persist'
 
   newGraphic: (event) ->
     request = @requestNewObject 'BoardGraphic'
@@ -77,11 +75,11 @@ class Board extends Spine.Controller
   noteClicked: (event) ->
     if @editing
       note = Note.find $(event.currentTarget).data('id')
-      value = prompt "enter some text to be displayed", $(event.currentTarget).text()
+      value = prompt 'enter some text to be displayed', $(event.currentTarget).text()
 
       if value
-        note.updateAttribute "text", value
-        note.trigger "persist"
+        note.updateAttribute 'text', value
+        note.trigger 'persist'
 
   reconnect: (event) ->
     @ws = new Ws()
@@ -89,8 +87,10 @@ class Board extends Spine.Controller
   startEditing: ->
     @editing = !@editing
     if @editing
+      @el.addClass 'editing'
       @disableDragging()
     else
+      @el.removeClass 'editing'
       @enableDragging()
 
 module.exports = Board

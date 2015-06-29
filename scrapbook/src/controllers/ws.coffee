@@ -17,15 +17,21 @@ class Ws extends Spine.Controller
       BoardGraphic: require('models/graphic')
       BoardNote: require('models/note')
 
-    for id, attributes of parsed
-      existing = valid[attributes.type].find(id)
+    if parsed.action == 'index' or parsed.action == 'update'
+      for id, attributes of parsed.entities
+        existing = valid[attributes.type].find(id)
+
+        if existing
+          existing.updateAttributes(attributes)
+        else if valid[attributes.type]
+          instance = attributes
+          instance.id = id
+          valid[attributes.type].create(instance)
+    else if parsed.action == 'delete'
+      existing = valid[parsed.type].find(parsed.id)
 
       if existing
-        existing.updateAttributes(attributes)
-      else if valid[attributes.type]
-        instance = attributes
-        instance.id = id
-        valid[attributes.type].create(instance)
+        existing.destroy()
 
   disconnected: ->
     @state.updateAttribute('status', 'disconnected')
