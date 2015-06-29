@@ -16,7 +16,7 @@ input::-webkit-inner-spin-button {
     position: fixed;
     text-align: center;
     top: 0px;
-    z-index: 925;
+    z-index: 7;
 }
 .headerbar > h2 {
     display: inline-block;

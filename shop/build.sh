@@ -1,4 +1,6 @@
 #!/bin/bash
+cd server
+
 build_frontend()
 {
   cd public && npm install && npm run build
