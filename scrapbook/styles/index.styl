@@ -15,16 +15,17 @@ p
   font-size: 16px
 
 div.draggable
-  cursor: move
   height: 1px
   width: 1px
   top: .4rem
-
-
   position: absolute
 
 div.delete
   visibility: hidden
+
+.dragging-enabled
+  .draggable
+    cursor: move
 
 .editing
   .delete, .graphic, .note
@@ -49,6 +50,10 @@ div.controls
   position: fixed
   width: 100%
   z-index: 925
+
+  input
+    border: 1px solid #DBE6EC
+    width: 100px
 
 div.note
   -webkit-box-shadow: 3px 3px 1px 1px #222222;

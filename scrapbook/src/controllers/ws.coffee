@@ -1,6 +1,7 @@
+Authkey = require('models/authkey')
 Draggable = require('./draggable')
 WsMessage = require('models/wsmessage')
-WsState = require('/models/wsstate')
+WsState = require('models/wsstate')
 
 class Ws extends Spine.Controller
   constructor: ->
@@ -32,6 +33,8 @@ class Ws extends Spine.Controller
 
       if existing
         existing.destroy()
+    else if parsed.action == 'auth'
+      Authkey.first().updateAttributes(parsed)
 
   disconnected: ->
     @state.updateAttribute('status', 'disconnected')
@@ -52,7 +55,8 @@ class Ws extends Spine.Controller
   send: (message) ->
     packet =
       action: message.action
-      target: message.target_id
+      authkey: Authkey.first().key
+      target: message.target
       value: message.value
     @ws.send JSON.stringify(packet)
 

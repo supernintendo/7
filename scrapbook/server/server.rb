@@ -1,3 +1,4 @@
+require 'highline/import'
 require 'rubygems'
 require 'json'
 require 'sinatra'
@@ -9,12 +10,14 @@ Dir['./lib/*.rb'].each do |file|
   require file
 end
 
+auth_key = ask 'auth key?'
 configure do
   # Connection stuff
   set :port, 9251
   set :server, 'thin'
 
   # Server state
+  set :auth_key, auth_key
   set :entities, {}
   set :sockets, []
   set :valid_entities, ['BoardGraphic', 'BoardNote']
@@ -28,7 +31,7 @@ get '/' do
     request.websocket do |ws|
       # Client joins
       ws.onopen do
-        ws.send("Hello World!")
+        ws.send('Hello World!')
         settings.sockets << ws
         send_to_all(all_entities)
       end
@@ -36,7 +39,11 @@ get '/' do
       # Message received
       ws.onmessage do |message|
         response = deal_with(message)
-        send_to_all(response)
+        if response[:private]
+          send_to(ws, response)
+        else
+          send_to_all(response)
+        end
       end
 
       # Client leaves
@@ -55,7 +62,7 @@ helpers do
       [key, entity.serialize]
     }.to_h
     response[:action] = 'index'
-    response.to_json
+    response
   end
 
   def create_entity(class_name)
@@ -73,17 +80,28 @@ helpers do
     parsed = JSON.parse(message)
 
     if message_is_valid?(parsed)
-      action = parsed['action']
-      target = parsed['target']
+      if parsed['action'] == 'auth'
+        response = {
+          action: 'auth',
+          auth_key: parsed['value'],
+          private: true,
+          valid: parsed['value'] == settings.auth_key
+        }
+      elsif parsed['authkey'] == settings.auth_key
+        action = parsed['action']
+        target = parsed['target']
 
-      if target == 'board'
-        response = create_entity(parsed['value']) if action == 'create'
-      elsif settings.entities.has_key?(target)
-        response = delete_entity(target) if action == 'destroy'
-        response = update_entity(target, parsed['value']) if action == 'update'
+        if target == 'board'
+          response = create_entity(parsed['value']) if action == 'create'
+        elsif settings.entities.has_key?(target)
+          response = delete_entity(target) if action == 'destroy'
+          response = update_entity(target, parsed['value']) if action == 'update'
+        end
+      else
+        response = 'bad authkey'
       end
     else
-      response = "bad message"
+      response = 'bad message'
     end
     response
   end
@@ -95,15 +113,23 @@ helpers do
       type: settings.entities[target].class.name,
     }
     settings.entities.delete(target)
-    response.to_h.to_json
+    response.to_h
   end
 
   # Validate an incoming message
   def message_is_valid?(message)
     message['action'] and
     message['target'] and
-    ['create', 'update', 'destroy'].include? message['action'] and
+    ['auth', 'create', 'update', 'destroy'].include? message['action'] and
     (message['target'] == 'board' or settings.entities.keys.include? message['target'])
+  end
+
+  def send_to(ws, message)
+    if message
+      EM.next_tick do
+        ws.send(message.to_json)
+      end
+    end
   end
 
   # Send a message to all clients
@@ -111,7 +137,7 @@ helpers do
     if message
       EM.next_tick do
         settings.sockets.each{ |s|
-          s.send(message)
+          s.send(message.to_json)
         }
       end
     end
@@ -123,11 +149,10 @@ helpers do
       entities: {}
     }
     response[:entities][id] = entity.serialize
-    response.to_h.to_json
+    response.to_h
   end
 
   def update_entity(id, attributes)
-    puts "updated #{id} #{attributes}"
     changes = attributes
     changes.delete 'id'
     target = settings.entities[id]

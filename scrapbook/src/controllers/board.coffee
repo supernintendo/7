@@ -1,3 +1,4 @@
+Authkey = require('models/authkey')
 Draggable = require('./draggable')
 Graphic = require('models/graphic')
 Note = require('models/note')
@@ -9,16 +10,19 @@ Ws = require('./ws')
 class Board extends Spine.Controller
   @include PacketSpec
   elements:
+    '.authkey': 'authkeyInput'
     '.draggables': 'draggables',
     '.ctrl-add': 'addButtons',
+    '.needs-auth': 'needsAuth',
 
   events:
     'click .ctrl-add-graphic': 'newGraphic',
     'click .ctrl-add-note': 'newNote',
-    'click .ctrl-edit': 'startEditing',
+    'click .ctrl-edit': 'toggleEditing',
     'click .ctrl-reconnect': 'reconnect'
     'click .graphic': 'graphicClicked',
     'click .note': 'noteClicked',
+    'keyup .authkey': 'authkeyChanged',
 
   constructor: ->
     @editing = false
@@ -27,13 +31,20 @@ class Board extends Spine.Controller
     super
 
   addListeners: ->
+    @listenTo Authkey, 'update', @proxy(@updateAuthDisplay)
     @listenTo Graphic, 'create', @proxy(@addObject)
     @listenTo Note, 'create', @proxy(@addObject)
     @listenTo WsState, 'create update', @proxy(@render)
 
+  authkeyChanged: ->
+    Authkey.first().updateAttribute 'key', @authkeyInput.val()
+    request = @requestCheckAuthKey Authkey.first().key
+    WsMessage.create request
+
   render: ->
     if WsState.last()
       @html require('views/board')({ status: WsState.last().status })
+      @updateAuthDisplay()
     else
       @html require('views/board')({ status: 'loading' })
 
@@ -42,15 +53,17 @@ class Board extends Spine.Controller
     @objects.push newObject
     @draggables.append newObject.el
 
-    if @editing
+    if @editing or not Authkey.first().valid
       @disableDragging()
 
   disableDragging: ->
     @addButtons.hide()
+    @el.removeClass 'dragging-enabled'
     for element in @draggables.children()
       $(element).draggabilly 'disable'
 
   enableDragging: ->
+    @el.addClass 'dragging-enabled'
     @addButtons.show()
     for element in @draggables.children()
       $(element).draggabilly 'enable'
@@ -84,13 +97,29 @@ class Board extends Spine.Controller
   reconnect: (event) ->
     @ws = new Ws()
 
-  startEditing: ->
+  toggleEditing: ->
     @editing = !@editing
+    @updateEditingDisplay()
+
     if @editing
-      @el.addClass 'editing'
       @disableDragging()
     else
-      @el.removeClass 'editing'
       @enableDragging()
+
+  updateAuthDisplay: ->
+    if Authkey.first().valid
+      @enableDragging()
+      @needsAuth.show()
+    else
+      @disableDragging()
+      @editing = false
+      @updateEditingDisplay()
+      @needsAuth.hide()
+
+  updateEditingDisplay: ->
+    if @editing
+      @el.addClass 'editing'
+    else
+      @el.removeClass 'editing'
 
 module.exports = Board

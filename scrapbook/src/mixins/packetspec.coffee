@@ -1,22 +1,29 @@
 PacketSpec =
+  requestCheckAuthKey: (key) ->
+    spec =
+      action: 'auth',
+      target: 'board',
+      value: key
+    spec
+
   requestNewObject: (type) ->
     spec =
       action: 'create',
-      target_id: 'board',
+      target: 'board',
       value: type
     spec
 
   requestUpdateObject: (instance) ->
     spec = 
       action: 'update',
-      target_id: instance.id
+      target: instance.id
       value: instance
     spec
 
   requestDeleteObject: (id) ->
     spec =
       action: 'destroy',
-      target_id: id
+      target: id
     spec
 
 module.exports = PacketSpec
