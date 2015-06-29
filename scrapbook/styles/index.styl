@@ -3,7 +3,8 @@
 @import "font-awesome/font-awesome.css"
 
 body
-  background-color: #ECF1F2
+  background-color: #E9E4D4
+  font-family: serif
 
 h2
   text-align: center
@@ -18,6 +19,8 @@ div.draggable
   height: 1px
   width: 1px
   top: .4rem
+
+
   position: absolute
 
 div.delete
@@ -41,15 +44,20 @@ div.delete
     visibility: visible
 
 div.controls
-  background-color: #CBDBE0
+  background-color: #7EBEAB
   padding: .4rem
   position: fixed
   width: 100%
   z-index: 925
 
 div.note
+  -webkit-box-shadow: 3px 3px 1px 1px #222222;
+  -moz-box-shadow:    3px 3px 1px 1px #222222;
+  box-shadow:         3px 3px 1px 1px #222222;
+
   background-color: #FDEECD
   border: 1px solid #EAB05E
+  padding: 3px
   position: absolute
 
   button
@@ -81,3 +89,5 @@ div.delete
   i
     position: relative
     top: 1px
+
+@import './background.ignore-linguist'
