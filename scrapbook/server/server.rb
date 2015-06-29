@@ -13,7 +13,7 @@ end
 auth_key = ask 'auth key?'
 configure do
   # Connection stuff
-  set :port, 9251
+  set :port, 7770
   set :server, 'thin'
 
   # Server state

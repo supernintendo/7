@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 
 configure do
-  set :port, 9252
+  set :port, 7772
   set :server, 'thin'
 end
 

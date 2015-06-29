@@ -47,7 +47,7 @@ class Ws extends Spine.Controller
       @deal_with parsed if parsed
 
   newWebsocket: ->
-    @ws = new WebSocket('ws://localhost:9251/')
+    @ws = new WebSocket('ws://localhost:7770/')
     @ws.onopen = @proxy(@connected)
     @ws.onclose = @proxy(@disconnected)
     @ws.onmessage = @proxy(@receive)
