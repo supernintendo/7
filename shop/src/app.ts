@@ -11,8 +11,8 @@ class App {
         this.navButtons = new Navbar.Buttons();
         this.productCategories = [
             new Store.ProductCategory({
-                remote: "test.json",
-                title: "product category"
+                remote: "products.json",
+                title: "Check out these great products of the cosmos. ✨"
             }, '[data-view="product-list"]')
         ];
         this.shoppingCart = new Cart.ShoppingCart('[data-view="shopping-cart"]');

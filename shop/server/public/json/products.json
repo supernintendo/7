@@ -1,0 +1,53 @@
+{
+    "data": [
+        {
+            "description": " ",
+            "id": 1,
+            "image": "images/moon.jpg",
+            "name": "Moon",
+            "price": 19.99
+        },
+        {
+            "description": " ",
+            "id": 2,
+            "image": "images/nebula.jpg",
+            "name": "Nebula",
+            "price": 4.99
+        },
+        {
+            "description": " ",
+            "id": 3,
+            "image": "images/hypervelocity-star.jpg",
+            "name": "Hypervelocity Star",
+            "price": 29.99
+        },
+        {
+            "description": " ",
+            "id": 4,
+            "image": "images/shooting-star.jpg",
+            "name": "Shooting Star",
+            "price": 9.99
+        },
+        {
+            "description": " ",
+            "id": 5,
+            "image": "images/black-hole.jpg",
+            "name": "Black Hole",
+            "price": 299.99
+        },
+        {
+            "description": " ",
+            "id": 6,
+            "image": "images/dwarf-galaxy.jpg",
+            "name": "Dwarf Galaxy",
+            "price": 99.99
+        },
+        {
+            "description": " ",
+            "id": 7,
+            "image": "images/star.jpg",
+            "name": "Star",
+            "price": 4.99
+        }
+    ]
+}
