@@ -1,49 +1,49 @@
 {
     "data": [
         {
-            "description": " ",
+            "description": "Never be alone again with the new Moon. Orbital distance may vary.",
             "id": 1,
             "image": "images/moon.jpg",
             "name": "Moon",
             "price": 19.99
         },
         {
-            "description": " ",
+            "description": "Nebula is an astronomer's best friend. Comes in ∞ different colors.",
             "id": 2,
             "image": "images/nebula.jpg",
             "name": "Nebula",
             "price": 4.99
         },
         {
-            "description": " ",
+            "description": "2 million miles per hour more than your Ferrari.",
             "id": 3,
             "image": "images/hypervelocity-star.jpg",
             "name": "Hypervelocity Star",
             "price": 29.99
         },
         {
-            "description": " ",
+            "description": "Move over Twinkle Twinkle. There's a new star in the atmosphere.",
             "id": 4,
             "image": "images/shooting-star.jpg",
             "name": "Shooting Star",
             "price": 9.99
         },
         {
-            "description": " ",
+            "description": "Your friends will never doubt general relativity again when the see the new Black Hole. Use at your own risk.",
             "id": 5,
             "image": "images/black-hole.jpg",
             "name": "Black Hole",
             "price": 299.99
         },
         {
-            "description": " ",
+            "description": "Small only in name. A billion more stars.",
             "id": 6,
             "image": "images/dwarf-galaxy.jpg",
             "name": "Dwarf Galaxy",
             "price": 99.99
         },
         {
-            "description": " ",
+            "description": "You may never be a star but you can own one today. No additional gravity necessary.",
             "id": 7,
             "image": "images/star.jpg",
             "name": "Star",
