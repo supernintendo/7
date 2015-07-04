@@ -1,14 +1,14 @@
 {
-  "name": "9two5_spine",
-  "author": "supernintendo",
-  "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "draggabilly": "1.2.1",
-    "font-awesome": "4.3.0",
-    "jade": "1.9.2",
-    "jquery": "2.1.3",
-    "purecss": "0.6.0",
-    "spine": "1.3.0"
-  }
+    "name": "7-scrapbook",
+    "author": "supernintendo",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "draggabilly": "1.2.1",
+        "font-awesome": "4.3.0",
+        "jade": "1.9.2",
+        "jquery": "2.1.3",
+        "purecss": "0.6.0",
+        "spine": "1.3.0"
+    }
 }
