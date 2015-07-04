@@ -92,7 +92,7 @@ module Cart {
             return this.attributes.items.filter(this.itemsInCart.bind(this, product));
         }
         checkout() {
-            window.location.href = 'https://www.youtube.com/watch?v=l8C09N6YvYc';
+            window.location.href = 'https://www.youtube.com/watch?v=mj1iKbR0Amo';
         }
         getSubtotal() {
             let subtotal = this.attributes.items.reduce(this.itemsToSubtotal, 0);
