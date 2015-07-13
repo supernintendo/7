@@ -27,8 +27,8 @@ var colorPalette = function(count, luminosity) {
     },
     activeColor = colors[0],
     mouseDown = false,
-    width = 24,
-    height = 24,
+    width = 16,
+    height = 16,
 
     // An individual cell on the pixel editor.
     Cell = React.createClass({
@@ -42,12 +42,13 @@ var colorPalette = function(count, luminosity) {
                 color: activeColor
             });
         },
-        handleHover: function() {
+        handleHover: function(e) {
             if (mouseDown) {
                 this.setState({
                     color: activeColor
                 });
             }
+            e.preventDefault();
         },
         render: function() {
             var styles = {
@@ -55,7 +56,7 @@ var colorPalette = function(count, luminosity) {
             };
 
             return (
-                <div className='pixel-cell' onMouseDown={this.handleClick} onMouseEnter={this.handleHover} style={styles}></div>
+                <div className='pixel-cell' onMouseDown={this.handleClick} onMouseEnter={this.handleHover} onTouchMove={this.handleHover} style={styles}></div>
             );
         }
     }),
@@ -106,10 +107,10 @@ var colorPalette = function(count, luminosity) {
         }
     }),
     Table = React.createClass({
-        handleMouseDown: function() {
+        handleMouseDown: function(e) {
             mouseDown = true;
         },
-        handleMouseUp: function() {
+        handleMouseUp: function(e) {
             mouseDown = false;
         },
         render: function() {
@@ -119,13 +120,14 @@ var colorPalette = function(count, luminosity) {
                 nodes.push(<Row width={this.props.width} />);
             }
             return (
-                <div className="pixel-table" onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
+                <div className="pixel-table" onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} onTouchStart={this.handleMouseDown} onTouchEnd={this.handleMouseUp}>
                     {nodes}
                 </div>
             );
         }
     });
 
+React.initializeTouchEvents(true);
 React.render(
     <Editor colors={colors} height={height} width={width} />,
     document.getElementById('content')

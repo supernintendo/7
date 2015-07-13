@@ -6,8 +6,8 @@ body {
     border: 1px solid #AAAAAA;
     cursor: pointer;
     display: inline-block;
-    height: 16px;
-    width: 16px;
+    height: 24px;
+    width: 24px;
 }
 .palette {
     display: inline-block;
@@ -27,8 +27,8 @@ body {
 
     cursor: crosshair;
     display: inline-block;
-    height: 16px;
-    width: 16px;
+    height: 32px;
+    width: 32px;
     margin: 0px:
     padding: 0px;
 }
