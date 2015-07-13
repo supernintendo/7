@@ -1,6 +1,7 @@
 body {
     background-color: #ECF1F2;
     text-align: center;
+    overflow: none;
 }
 .color-cell {
     border: 1px solid #AAAAAA;
