@@ -146,7 +146,7 @@ h4 {
     -ms-transition:     all 0.2s ease;
     -o-transition:      all 0.2s ease;
 }
-
+¯
 /* Loader */
 @-moz-keyframes loader-bar {
     0% {

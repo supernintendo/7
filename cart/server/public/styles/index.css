@@ -1,0 +1,219 @@
+/* Header bar */
+* {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition:    all 0.2s ease;
+    -ms-transition:     all 0.2s ease;
+    -o-transition:      all 0.2s ease;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    margin: 0;
+}
+
+body {
+    background: url("../images/bg.jpg");
+    color: white;
+}
+
+.headerbar {
+    height: 8rem;
+    width: 100%;
+
+    color: #33C3F0;
+    left: 0px;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    z-index: 77;
+}
+.headerbar > h2 {
+    display: inline-block;
+    font-size: 3.84rem;
+    font-weight: 600;
+    padding-left: 12px;
+    padding-top: 12px;
+    vertical-align: middle;
+}
+.headerbar-background-slip-in {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    z-index: 7;
+    height: 8rem;
+    width: 100%;
+}
+.space-bg {
+    background: url("../images/bg.jpg");
+    position: fixed;
+}
+.title-overlay {
+    background: transparent;
+    color: black;
+    pointer-events: none;
+    z-index: 777;
+}
+.title-overlay h2 {
+    font-size: 4rem;
+    font-weight: 400;
+}
+.blue-bg {
+    background: #33C3F0;
+    position: absolute;
+    z-index: 17;
+}
+.nav-buttons {
+    display: inline-block;
+    float: right;
+    padding: 2.2rem 1rem 0 0;
+    vertical-align: middle;
+}
+.nav-buttons button {
+    background-color: black;
+    color: white;
+    font-size: 9px;
+    padding: 0 16px 0 16px;
+}
+.nav-buttons button:hover {
+    background-color: #33C3F0;
+    border: 1px solid #33C3F0;
+    color: black;
+}
+
+/* Product list */
+.category-title {
+    padding-top: 4rem;
+}
+.product {
+    padding: 20px;
+    text-align: center;
+}
+.product img {
+    height: 60%;
+    width: 60%;
+}
+.product > .description {
+    font-size: 75%;
+    padding-top: 12px;
+    text-align: center;
+}
+.product-list-rows > div {
+    min-height: 400px;
+}
+.product button {
+    background-color: black;
+    font-size: 9px;
+    padding: 0 16px 0 16px;
+}
+.container {
+    margin-top: -12px;
+}
+h2 {
+    font-size: 2.6rem;
+    text-align: center;
+}
+h4 {
+    font-size: 2.1rem;
+}
+
+/* Shopping cart */
+.subtotal {
+    float: right;
+}
+.quantity-input {
+    max-width: 60px;
+}
+.checkout-and-subtotal button {
+    background-color: black;
+}
+
+/* Others */
+.extra-space-below-headerbar {
+    height: 121px;
+}
+[data-component] {
+    display: none;
+}
+[data-view] {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition:    all 0.2s ease;
+    -ms-transition:     all 0.2s ease;
+    -o-transition:      all 0.2s ease;
+}
+
+/* Loader */
+@-moz-keyframes loader-bar {
+    0% {
+        background: white;
+    }
+    10% {
+        background: #33C3F0;
+    }
+    40% {
+        background: white;
+    }
+}
+@-webkit-keyframes loader-bar {
+    0% {
+        background: white;
+    }
+    10% {
+        background: #33C3F0;
+    }
+    40% {
+        background: white;
+    }
+}
+@keyframes loader-bar {
+    0% {
+        background: white;
+    }
+    10% {
+        background: #33C3F0;
+    }
+    40% {
+        background: white;
+    }
+}
+.loader {
+    width: 1em;
+    height: 1em;
+
+    -moz-animation: loader-bar 1500ms 300ms infinite ease-out;
+    -webkit-animation: loader-bar 1500ms 300ms infinite ease-out;
+    animation: loader-bar 1500ms 300ms infinite ease-out;
+    background: white;
+    display: inline-block;
+    position: relative;
+    text-indent: -9999px;
+    margin: 0 1.6em;
+}
+.loader:before, .loader:after {
+    width: 1em;
+    height: 1em;
+
+    background: white;
+    content: '♥';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+}
+.loader:before {
+    -moz-animation: loader-bar 1500ms 150ms infinite ease-out;
+    -webkit-animation: loader-bar 1500ms 150ms infinite ease-out;
+    animation: loader-bar 1500ms 150ms infinite ease-out;
+    left: -1.6em;
+}
+.loader:after {
+    -moz-animation: loader-bar 1500ms 450ms infinite ease-out;
+    -webkit-animation: loader-bar 1500ms 450ms infinite ease-out;
+    animation: loader-bar 1500ms 450ms infinite ease-out;
+    right: -1.6em;
+}
+.spacing {
+    width: 1.4rem;
+    display: inline-block;
+}

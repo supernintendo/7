@@ -1,3 +1,8 @@
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
 /* Singletons */
 .fixed        { display: fixed; }
 .full-height  { height: 100%; }
@@ -37,7 +42,7 @@
 }
 @font-face {
     font-family: GOGOIA;
-    src: url(GOGOIA-Deco.otf);
+    src: url(GOGOIA-Deco.ttf);
 }
 
 /* Colors */
@@ -99,6 +104,7 @@
 }
 #time {
     font-family: tritio, GOGOIA;
+    padding-bottom: 0.25rem;
     text-shadow: 2px 2px #7D6A66;
 }
 .content {

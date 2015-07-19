@@ -1,4 +1,4 @@
-~function() {
+(function() {
     var inner = document.getElementById('inner-container'),
         milestone = document.getElementById('milestone-container'),
         milestones = document.getElementById('milestones'),
@@ -107,4 +107,4 @@
     setInterval(updateTimer, 1000);
     setInterval(shuffleBackground, 30000);
     milestone.addEventListener('click', updateMilestone);
-}();
+})();
