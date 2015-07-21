@@ -16,6 +16,7 @@ module Store {
             let button: HTMLScriptElement = Helper.selector(this.target, '[data-control="add-to-cart-button"]');
 
             button.addEventListener('click', this.addToCart.bind(this));
+            button.addEventListener('touchend', this.addToCart.bind(this));
         }
         addToCart() {
             APP.shoppingCart.addToCart(this.attributes);
