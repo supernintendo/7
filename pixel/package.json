@@ -5,11 +5,13 @@
     "private": true,
     "dependencies": {
         "animate.css": "3.1.1",
+        "browserify": "5.11.1",
         "randomcolor": "0.2.0",
         "react": "0.13.1",
+        "reactify": "1.1.1",
         "react-tools": "0.13.1"
     },
     "scripts": {
-        "build": "rm -rf build && mkdir build && node_modules/react-tools/bin/jsx src/app.jsx > ./build/index.js"
+        "build": "rm -rf build && mkdir build && node_modules/browserify/bin/cmd.js -t reactify src/app.jsx -o ./build/index.js"
     }
 }
