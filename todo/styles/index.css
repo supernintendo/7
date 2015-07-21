@@ -80,7 +80,6 @@ input.menu-input {
 }
 .list-filters {
     display: inline-block;
-    float: right;
 }
 .list-filters > input {
     display: inline-block;
@@ -96,7 +95,7 @@ input.menu-input {
 .list-group-item .col-sm-8 { margin-bottom: 1.66rem; }
 .main-controls {
     padding-bottom: 1.5rem;
-    text-align: left;
+    text-align: center;
     width: 400px;
 }
 .task-controls { float: right; }
