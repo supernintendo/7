@@ -23,3 +23,11 @@ Helper.ready(function() {
     APP = new App();
     Helper.navigateToShop();
 });
+
+// Fancy scroll.
+window.onscroll = function() {
+    let slipIn: HTMLScriptElement = <HTMLScriptElement>document.getElementById('space-slip-in'),
+        pos: Number = window.scrollY / 2;
+
+    slipIn.style.backgroundPosition = '0px ' + pos + 'px';
+}
