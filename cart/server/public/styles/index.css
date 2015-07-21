@@ -1,11 +1,4 @@
 /* Header bar */
-* {
-    -webkit-transition: all 0.2s ease;
-    -moz-transition:    all 0.2s ease;
-    -ms-transition:     all 0.2s ease;
-    -o-transition:      all 0.2s ease;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: textfield;
