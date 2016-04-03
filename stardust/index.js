@@ -76,7 +76,7 @@ console.log("%c                                                                 
 /*      wow, my */ Math /* skills really do suck...
     thought I could land that ___
     
-        _.. from 81,000 altitude but my ship just
+        _.. from 7,777 ft. altitude but my ship just
     ended up sinking into the */ .floor;
 
 
