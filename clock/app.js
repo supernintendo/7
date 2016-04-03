@@ -90,12 +90,12 @@
         },
         updateTimer = function() {
             var parts = [
-                moment().format('h'),
-                moment().format('mm'),
-                moment().format('ss')
+                '<span>' + moment().format('h') + '</span>',
+                '<span>' + moment().format('mm') + '</span>',
+                '<span>' + moment().format('ss') + '</span>'
             ];
 
-            timer.innerHTML = parts.join('<span class="color-two">:</span>') +
+            timer.innerHTML = parts.join('<span class="color-two colon">:</span>') +
                               '<span class="color-three am-pm">' +
                               moment().format('a') +
                               '</span>';

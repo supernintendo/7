@@ -107,8 +107,18 @@ body, html {
 }
 #time {
     font-family: tritio, GOGOIA;
-    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     text-shadow: 2px 2px #7D6A66;
+}
+#time span {
+    display: inline-block;
+    max-width: 48px;
+}
+#time span.colon {
+    max-width: 18px;
+}
+#time span.am-pm {
+    max-width: 100px;
 }
 .content {
     font-family: Folks, Avenir, Helvetica, Arial, sans-serif;

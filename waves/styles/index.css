@@ -1,5 +1,5 @@
 html {
-    background: black;
+    background: white;
 }
 .orb {
     height: 128px;
@@ -32,7 +32,7 @@ html {
     top: -10px;
     width: 4px;
     height: 4px;
-    background: white;
+    background: black;
     -moz-border-radius: 42px;
     -webkit-border-radius: 42px;
     -ms-border-radius: 42px;
