@@ -22,7 +22,7 @@ Make sure you have Ruby `2.1.2` installed and run the `build.sh` script in this 
 ## `/clock`
 <img src="./clock/screenshot.jpg" width="50%"></img>
 
-This is digital clock written in JavaScript and using [Moment](https://github.com/moment/moment) and [Underscore](https://github.com/jashkenas/underscore). The background cycles through various images that differ depending on the time of day. Various milestones throughout computing history are randomly displayed under the time.
+This is a digital clock written in JavaScript and using [Moment](https://github.com/moment/moment) and [Underscore](https://github.com/jashkenas/underscore). The background cycles through various images that differ depending on the time of day. Various milestones throughout computing history are randomly displayed under the time.
 
 Simply `npm install` and open `index.html` in your web browser.
 
@@ -36,7 +36,7 @@ Just run `npm install` and `npm run build`, then open `index.html` in your web b
 ## `/stardust`
 <img src="./stardust/screenshot.jpg" width="50%"></img>
 
-This was an attempt to write the worst, most unreadable yet still syntactically valid JavaScript possible. Stars and colors pulse in and out of existence like a gaudy screensaver from the mid-90s.
+This is an attempt to write the worst, most unreadable yet still syntactically valid JavaScript possible. Stars and colors pulse in and out of existence like a gaudy screensaver from the mid-90s.
 
 To view, open `index.html` in your web browser.
 
