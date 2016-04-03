@@ -3,62 +3,14 @@ module.exports = (function() {
         var _tasks = [],
             counter = 0,
             names = [
-                "Hey,",
-                "thanks",
-                "for",
-                "checking",
-                "this",
-                "out",
-                "but",
-                "I",
-                "have",
-                "one",
-                "question,",
-                "which",
-                "is,",
-                "why",
-                "are",
-                "you",
-                "checking",
-                "this",
-                "out?",
-                "It",
-                "is",
-                "simply",
-                "a",
-                "todo",
-                "list",
-                "built",
-                "in",
-                "Angular",
-                "and",
-                "nothing",
-                "more.",
-                "There",
-                "are",
-                "plenty",
-                "of",
-                "more",
-                "interesting",
-                "things",
-                "on",
-                "the",
-                "Internet",
-                "you",
-                "could",
-                "be",
-                "looking",
-                "at.",
-                "You",
-                "must",
-                "really",
-                "love",
-                "me.",
-                "I",
-                "love",
-                "you",
-                "too.",
-                "😘"
+                "do",
+                "re",
+                "mi",
+                "fa",
+                "so",
+                "la",
+                "ti",
+                "do"
             ];
 
         // Create a new task.
@@ -95,6 +47,9 @@ module.exports = (function() {
         // Mark all tasks as not editing.
         this.stopEditingAllTasks = function() {
             _tasks.forEach(function(task) {
+                if (task.name.trim() === '') {
+                    task.name = 'untitled';
+                }
                 task.editing = false;
             }, this);
         };

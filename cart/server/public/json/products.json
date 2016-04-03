@@ -26,7 +26,7 @@
             "id": 4,
             "image": "images/shooting-star.jpg",
             "name": "Shooting Star",
-            "price": 9.99
+            "price": 12.99
         },
         {
             "description": "Your friends will never doubt general relativity again when they see the new Black Hole. Use at your own risk.",
@@ -48,6 +48,13 @@
             "image": "images/star.jpg",
             "name": "Star",
             "price": 4.99
+        },
+        {
+            "description": "Great deal on this classic planet. Heavily used.",
+            "id": 8,
+            "image": "images/earth.jpg",
+            "name": "Earth",
+            "price": 9.99
         }
     ]
 }

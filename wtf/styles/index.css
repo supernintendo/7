@@ -1,19 +1,44 @@
-html, body {
-    background-color: black;
+html {
+    background: url('../img/bg.gif');
     height: 100%;
     width: 100%;
     padding: 0;
     margin: 0;
-
+}
+html.invert {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+body {
+    background: rgba(240, 240, 240, 0.97);
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    position: fixed;
+    margin: 0;
     overflow: hidden;
 
-    -webkit-animation: rainbow 6s infinite;
-    -moz-animation:    rainbow 6s infinite;
-    -o-animation:      rainbow 6s infinite;
-    animation:         rainbow 6s infinite;
+    -webkit-animation: rainbow 100s infinite;
+    -moz-animation:    rainbow 100s infinite;
+    -o-animation:      rainbow 100s infinite;
+    animation:         rainbow 100s infinite;
 
-    -webkit-filter: hue-rotate(0deg);
+    -webkit-filter: hue-rotate(0deg), invert(1);
     filter: hue-rotate(0deg);
+}
+header, footer {
+    background: url('../img/bg.gif');
+    position: fixed;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    z-index: 2;
+}
+header {
+    top: 0;
+}
+footer {
+    bottom: 0;
 }
 
 /* Chrome, Safari, Opera */ 

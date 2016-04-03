@@ -1,3 +1,4 @@
+#!/usr/bin/env rubyb
 require 'rubygems'
 require 'sinatra'
 

@@ -10,7 +10,7 @@ body, html {
 .hide         { display: none; }
 .inline-block { display: inline-block; }
 .large-type   { font-size: 6rem; }
-.medium-type  { font-size: 4.275rem; }
+.medium-type  { font-size: 4rem; }
 .no-padding   { padding: 0; }
 .no-margin    { margin: 0; }
 .small-type   { font-size: 0.89rem; }
@@ -69,6 +69,9 @@ body, html {
 /* Display */
 * {
     cursor: default;
+}
+.am-pm {
+    font-size: 2.775rem;
 }
 .slow-transition { 
     -webkit-transition: all 4s ease;

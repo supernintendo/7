@@ -12,7 +12,7 @@ class App {
         this.productCategories = [
             new Store.ProductCategory({
                 remote: "products.json",
-                title: "Check out these great products of the cosmos. ✨"
+                title: "✨ Check out these great products of the cosmos. ✨"
             }, '[data-view="product-list"]')
         ];
         this.shoppingCart = new Cart.ShoppingCart('[data-view="shopping-cart"]');

@@ -1,5 +1,6 @@
 var angular = require('angular');
 
+// Entry point to our Angular app
 angular
     .module('app', [])
     .controller('MainController', require('./controllers/main'))

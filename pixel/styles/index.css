@@ -1,20 +1,47 @@
+@media screen and (max-width: 600px) {
+    .color-cell {
+        height: 16px;
+        width: 16px;
+    }
+    .pixel-cell {
+        height: 20px;
+        width: 20px;
+    }
+}
+@media screen and (min-width: 600px) {
+    .color-cell {
+        height: 24px;
+        width: 24px;
+    }
+    .pixel-cell {
+        height: 32px;
+        width: 32px;
+    }
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
 body {
     background-color: #ECF1F2;
     text-align: center;
     overflow: none;
 }
-.color-cell {
-    border: 1px solid #AAAAAA;
-    cursor: pointer;
-    display: inline-block;
-    height: 24px;
-    width: 24px;
+body.tripping {
+    -webkit-animation: rainbow 10s infinite;
+    -moz-animation:    rainbow 10s infinite;
+    -o-animation:      rainbow 10s infinite;
+    animation:         rainbow 10s infinite;
+
+    -webkit-filter: hue-rotate(0deg), invert(1);
+    filter: hue-rotate(0deg);
 }
-.palette {
-    display: inline-block;
-    padding-top: 16px;
-    width: 420px;
-}
+
+/*         */
+/* Drawing */
+/*         */
 .pixel-cell {
     box-sizing:border-box;
     -moz-box-sizing:border-box;
@@ -28,8 +55,6 @@ body {
 
     cursor: crosshair;
     display: inline-block;
-    height: 32px;
-    width: 32px;
     margin: 0px:
     padding: 0px;
 }
@@ -39,4 +64,56 @@ body {
     line-height: 0px;
     margin: 0px;
     padding: 0px;
+}
+
+/*            */
+/* Animations */
+/*            */
+
+/* Chrome, Safari, Opera */ 
+@-webkit-keyframes rainbow {
+    0% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    50%  {
+        -webkit-filter: hue-rotate(360deg);
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+}
+
+/* Standard syntax */
+@keyframes rainbow {
+    0% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+    50%  {
+        -webkit-filter: hue-rotate(360deg);
+        filter: hue-rotate(180deg);
+    }
+    100% {
+        -webkit-filter: hue-rotate(0deg);
+        filter: hue-rotate(0deg);
+    }
+}
+
+
+/*         */
+/* Palette */
+/*         */
+
+.color-cell {
+    border: 1px solid #AAAAAA;
+    cursor: pointer;
+    display: inline-block;
+}
+.palette {
+    display: inline-block;
+    padding-top: 16px;
+    max-width: 420px;
 }

@@ -7,9 +7,12 @@ module.exports = (function() {
             task.playing = false;
             vm.stopInterval();
         };
+
         vm.stopInterval = function() {
             $interval.cancel(_timerPromise);
         };
+
+        // Count down every second.
         vm.resumeTask = function(task) {
             vm.stopInterval();
 
@@ -23,6 +26,7 @@ module.exports = (function() {
                 }
             }, 1000);
         };
+        
         vm.updateTimeString = function(task) {
             task.timeString = moment(task.accumulatedTime).format('mm:ss');
         };

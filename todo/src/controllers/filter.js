@@ -4,7 +4,7 @@ module.exports = (function() {
         vm.searchPhrase = "";
 
         vm.applyFilter = function(tasks) {
-            ElementsService.makeDropdownsSticky();
+            ElementsService.makeDropdownsSticky(); // Refresh dropdowns.
             tasks.map(this.filterBySearchPhrase, this);
         };
 

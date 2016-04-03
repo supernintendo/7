@@ -71,7 +71,7 @@ button {
 .nav-buttons button {
     background-color: black;
     color: white;
-    font-size: 9px;
+    font-size: 12px;
     padding: 0 16px 0 16px;
 }
 .nav-buttons button:hover {
@@ -85,16 +85,18 @@ button {
     padding-top: 4rem;
 }
 .product {
-    padding: 20px;
+    min-height: 48rem;
+    margin: 4rem 0 4rem 0;
     text-align: center;
 }
 .product img {
-    height: 60%;
-    width: 60%;
+    height: 50%;
+    width: 50%;
 }
 .product > .description {
-    font-size: 75%;
+    font-size: 14px;
     padding-top: 12px;
+    margin: 2rem;
     text-align: center;
 }
 .product-list-rows > div {
@@ -102,18 +104,18 @@ button {
 }
 .product button {
     background-color: black;
-    font-size: 9px;
+    font-size: 12px;
     padding: 0 16px 0 16px;
 }
 .container {
     margin-top: -12px;
 }
 h2 {
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     text-align: center;
 }
 h4 {
-    font-size: 2.1rem;
+    font-size: 2.4rem;
 }
 
 /* Shopping cart */

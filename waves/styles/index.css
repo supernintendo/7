@@ -1,34 +1,11 @@
 html {
-    background: white;
+    background: black;
 }
 .orb {
     height: 128px;
     width: 128px;
     position: absolute;
 }
-
-.ring {
-    position: absolute;
-    width: 128px;
-    height: 128px;
-    border: 1px solid #000000;
-    -moz-border-radius: 128px;
-    -webkit-border-radius: 128px;
-    -ms-border-radius: 128px;
-    -o-border-radius: 128px;
-    border-radius: 128px;
-
-    -moz-animation-name: ring-pulse;
-    -moz-animation-duration: 4s;
-    -moz-animation-iteration-count: infinite;
-    -webkit-animation-name: ring-pulse;
-    -webkit-animation-duration: 4s;
-    -webkit-animation-iteration-count: infinite;
-    animation-name: ring-pulse;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-}
-
 .orb-radius {
     position: absolute;
     width: 34px;
@@ -49,21 +26,19 @@ html {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
-
 .particle {
     position: absolute;
     left: 0px;
     top: -10px;
-    width: 20px;
-    height: 20px;
-    background: #000000;
+    width: 4px;
+    height: 4px;
+    background: white;
     -moz-border-radius: 42px;
     -webkit-border-radius: 42px;
     -ms-border-radius: 42px;
     -o-border-radius: 42px;
     border-radius: 42px;
 }
-
 @-moz-keyframes particle-rotate {
     0% {
         -moz-transform: rotate(0deg)
@@ -73,7 +48,6 @@ html {
         -moz-transform: rotate(360deg)
     }
 }
-
 @-webkit-keyframes particle-rotate {
     0% {
         -webkit-transform: rotate(0deg)
@@ -84,7 +58,6 @@ html {
     }
 
 }
-
 @keyframes particle-rotate {
     0% {
         transform: rotate(0deg)
@@ -95,7 +68,6 @@ html {
     }
 
 }
-
 @-webkit-keyframes ring-pulse {
     0% {
         opacity: 0.8;
@@ -107,7 +79,6 @@ html {
         opacity: 0.8;
     }
 }
-
 @-moz-keyframes ring-pulse {
     0% {
         opacity: 0.8;
@@ -119,7 +90,6 @@ html {
         opacity: 0.8;
     }
 }
-
 @keyframes ring-pulse {
     0% {
         opacity: 0.8;
@@ -131,7 +101,6 @@ html {
         opacity: 0.8;
     }
 }
-
 [data-component] {
     display: none;
 }

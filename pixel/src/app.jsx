@@ -13,19 +13,6 @@ module.exports = (function() {
             .concat(colorPalette(29, 'light'))
             .concat(colorPalette(29, 'dark'))
         ),
-        loadArt = function(artMap) {
-            var i, k = Object.keys(artMap);
-            for (i = 0; i < k.length; i++) {
-                document.querySelector('[data-reactid="' + k[i] + '"]').style.backgroundColor = artMap[k[i]];
-            }
-        },
-        saveArt = function() {
-            var i, artMap = {}, nodes = document.querySelectorAll('.pixel-cell');
-            for (i = 0; i < nodes.length; i++) {
-                artMap[nodes[i].dataset.reactid] = nodes[i].style.backgroundColor;
-            }
-            return artMap;
-        },
         activeColor = colors[0],
         mouseDown = false,
         width = 16,
@@ -57,10 +44,16 @@ module.exports = (function() {
                 };
 
                 return (
-                    <div className='pixel-cell' onMouseDown={this.handleClick} onMouseEnter={this.handleHover} onTouchMove={this.handleHover} style={styles}></div>
+                    <div className='pixel-cell'
+                         onMouseDown={this.handleClick}
+                         onMouseEnter={this.handleHover}
+                         onTouchMove={this.handleHover}
+                         style={styles}></div>
                 );
             }
         }),
+
+        // An individual cell within the color palette.
         ColorCell = React.createClass({
             setActiveColor: function() {
                 activeColor = this.props.color;
@@ -71,42 +64,72 @@ module.exports = (function() {
                 };
 
                 return (
-                    <div className="color-cell" onClick={this.setActiveColor} style={styles}>
+                    <div className="color-cell"
+                         onClick={this.setActiveColor}
+                         style={styles}>
                     </div>
                 );
             }
         }),
+
+        // Top level class.
         Editor = React.createClass({
+            componentDidUpdate: function() {
+                if (this.state.tripping) {
+                    document.body.classList.add('tripping');
+                } else {
+                    document.body.classList.remove('tripping');
+                }
+            },
+            getInitialState: function() {
+                return {
+                    tripping: false
+                };
+            },
+            toggleTrip: function() {
+                this.setState({
+                    tripping: !this.state.tripping
+                });
+            },
             render: function() {
-                var i, nodes = [];
+                var i,
+                    buttonLabel = this.state.tripping ? "Return to normal" : "Trip";
+                    nodes = [];
 
                 for (i = 0; i < this.props.colors.length; i++) {
-                    nodes.push(<ColorCell color={this.props.colors[i]} />);
+                    nodes.push(<ColorCell color={this.props.colors[i]} key={"color-cell-" + i} />);
                 }
                 return (
                     <div>
-                    <Table height={this.props.height} width={this.props.width} />
-                    <div className="palette">
-                    {nodes}
-                    </div>
+                        <Table height={this.props.height} width={this.props.width} />
+                        <div className="palette">
+                            {nodes}
+                        </div>
+                        <div>
+                            <button onClick={this.toggleTrip}>{buttonLabel}</button>
+                        </div>
                     </div>
                 );
             }
         }),
+
+        // A row on the pixel editor.
         Row = React.createClass({
             render: function() {
                 var i, nodes = [];
 
                 for (i = 0; i < this.props.width; i++) {
-                    nodes.push(<Cell />);
+                    nodes.push(<Cell key={"cell-" + i} />);
                 }
                 return (
                     <div className="pixel-row">
-                    {nodes}
+                        {nodes}
                     </div>
                 );
             }
         }),
+
+        // The pixel editor itself.
         Table = React.createClass({
             handleMouseDown: function(e) {
                 mouseDown = true;
@@ -118,11 +141,15 @@ module.exports = (function() {
                 var i, nodes = [];
 
                 for (i = 0; i < this.props.height; i++) {
-                    nodes.push(<Row width={this.props.width} />);
+                    nodes.push(<Row key={"row-" + i} width={this.props.width} />);
                 }
                 return (
-                    <div className="pixel-table" onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} onTouchStart={this.handleMouseDown} onTouchEnd={this.handleMouseUp}>
-                    {nodes}
+                    <div className="pixel-table"
+                         onMouseDown={this.handleMouseDown}
+                         onMouseUp={this.handleMouseUp}
+                         onTouchStart={this.handleMouseDown}
+                         onTouchEnd={this.handleMouseUp}>
+                        {nodes}
                     </div>
                 );
             }

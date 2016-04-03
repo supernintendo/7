@@ -1,103 +1,77 @@
 (function() {
-    var colors = [
-            [[199, 237, 232], [160, 222, 214], [69, 181, 196]],
-            [[176, 248, 255], [174, 232, 251], [0, 188, 209]],
-            [[36, 192, 235], [36, 192, 235], [238, 232, 232]],
-            [[36, 55, 87], [58, 95, 111], [218, 213, 183]]
-            [[25, 191, 184], [69, 217, 167], [247, 218, 136]],
-            [[2, 170, 176], [0, 205, 172], [127, 255, 36]],
-            [[255, 255, 255], [255, 255, 255], [0, 0, 0]]
-        ],
-        gradient = 0,
-        interval = Math.floor(Math.random() * 120),
-        stroke,
-        x = 0,
-        y = 0,
-        xSpacing = 60,
-        ySpacing = 75,
-        template = document.querySelector('#wave-orb').innerHTML,
-        viewport = {},
-
-        adjustElement = function(element, left, top) {
+    var Waves = {
+        attributes: {
+            intervalLow: 10,
+            intervalHigh: 420,
+            xSpacingLow: 20,
+            xSpacingHigh: 140,
+            ySpacingLow: 20,
+            ySpacingHigh: 140,
+            template: document.querySelector('#wave-orb').innerHTML
+        },
+        // Place an orb.
+        adjustElement: function(element, left, top) {
             element.style.position = 'fixed';
             element.style.marginTop = -45 + 'px';
             element.style.marginLeft = -45 + 'px';
             element.style.paddingLeft = left + 'px';
             element.style.paddingTop = top + 'px';
         },
-        colorElement = function(element) {
-            element.querySelector('.ring').style.borderColor = rgba(stroke, 1);
-            element.querySelector('.particle').style.background = rgba(stroke, 1);
+        // Random int
+        random: function(low, high) {
+            return low + Math.floor(Math.random() * high);
+        },
+        // Reset the animation state.
+        resetValues: function() {
+            var attr = this.attributes;
 
-            if (gradient[y]) {
-                element.querySelector('.ring').style.background = rgba(gradient[y], 0.6);
-            }
+            this.state = {
+                interval: this.random(attr.intervalLow, attr.intervalHigh),
+                x: 0,
+                xSpacing: this.random(attr.xSpacingLow, attr.xSpacingHigh),
+                y: 0,
+                ySpacing: this.random(attr.ySpacingLow, attr.ySpacingHigh)
+            };
         },
-        getGradient = function(samples, rgbTo, rgbFrom) {
-            var rgbDiff = [
-                    rgbTo[0] - rgbFrom[0],
-                    rgbTo[1] - rgbFrom[1],
-                    rgbTo[2] - rgbFrom[2]
-                ],
-                hues = [],
-                i;
-
-            for (i = 0; i < samples; i++) {
-                hues.push(getGradientPoint(i / samples, rgbDiff, rgbFrom));
-            }
-            return hues;
+        // Store the window height and width.
+        storeViewport: function() {
+            this.viewport.height = window.innerHeight,
+            this.viewport.width = window.innerWidth;
         },
-        getGradientPoint = function(delta, rgbDiff, rgbFrom) {
-            return [
-                Math.floor(rgbDiff[0] * delta + rgbFrom[0]),
-                Math.floor(rgbDiff[1] * delta + rgbFrom[1]),
-                Math.floor(rgbDiff[2] * delta + rgbFrom[2])
-            ];
-        },
-        getRandomColors = function() {
-            return colors[Math.floor((Math.random() * colors.length))] || colors[0];
-        },
-        rgba = function(colors, alpha) {
-            return 'rgba(' + colors.join(',') + ', ' + alpha + ')';
-        },
-        resetValues = function() {
-            x = 0;
-            y = 0;
-        },
-        storeViewport = function() {
-            viewport.height = window.innerHeight,
-            viewport.width = window.innerWidth;
-        },
-        resetAll = function() {
-            var colorSet = getRandomColors();
-
-            resetValues();
-            storeViewport();
-            gradient = getGradient(viewport.height / ySpacing, colorSet[0], colorSet[1]);
-            stroke = colorSet[2];
+        // Reset the animation.
+        resetAll: function() {
+            this.resetValues();
+            this.storeViewport();
             document.body.innerHTML = '';
-        };
-
-    window.addEventListener('resize', resetAll);
-    resetAll();
-    setInterval(function() {
-        var el,
-            left = x * xSpacing,
-            top = y * ySpacing;
-
-        if (top < viewport.height + 45) {
-            el = document.createElement('div'),
-            el.innerHTML = template;
-            adjustElement(el, left, top);
-            colorElement(el);
-            document.body.appendChild(el);
-
-            if (left > viewport.width) {
-                y++;
-                x = 0;
-            } else {
-                x++;
+        },
+        // Begin placing the orbs.
+        tick: function() {
+            if (this.interval) {
+                clearTimeout(this.interval);
             }
-        }
-    }, interval);
+            this.interval = setInterval(function() {
+                var el,
+                    left = this.state.x * this.state.xSpacing,
+                    top = this.state.y * this.state.ySpacing;
+
+                if (top < this.viewport.height + 45) {
+                    el = document.createElement('div');
+                    el.innerHTML = this.attributes.template;
+                    this.adjustElement(el, left, top);
+                    document.body.appendChild(el);
+
+                    if (left > this.viewport.width) {
+                        this.state.y++;
+                        this.state.x = 0;
+                    } else {
+                        this.state.x++;
+                    }
+                }
+            }.bind(this), this.state.interval);
+        },
+        viewport: {}
+    };
+    window.addEventListener('resize', Waves.resetAll.bind(Waves));
+    Waves.resetAll();
+    Waves.tick();
 })();

@@ -1,14 +1,17 @@
+/*         */
+/* General */
+/*         */
+
 /* Fonts! ...pretty, pretty fonts. */
 @font-face {
-    font-family: 'Cubefont';
-    src: url(modular.ttf) format('truetype');
+    font-family: 'Cookies and Milk';
+    src: url(cookies&milk-regular.ttf) format('truetype');
 }
 @font-face {
-    font-family: 'Kurzwaren';
-    src: url(KURZRG__.TTF) format('truetype');
+    font-family: 'PT Sans';
+    src: url(PT_Sans-Web-Regular.ttf) format('truetype');
 }
-.cubefont { font-family: Cubefont, sans-serif; }
-.kurzwaren { font-family: Kurzwaren, sans-serif; }
+.handwriting { font-family: 'Cookies and Milk', sans-serif; }
 
 /* Show and hide labels based on viewport width */
 @media screen and (max-width: 450px) {
@@ -16,107 +19,191 @@
         display: none;
     }
 }
-@media screen and (max-width: 540px) {
-    .list-group-item input {
-        width: 9rem;
-    }
+body, html {
+    height: 100%;
+    width: 100%;
 }
-@media screen and (min-width: 540px) {
-    .list-group-item input {
-        width: 18rem;
-    }
+body {
+    background-color: #FAEBDC;
+    font-family: 'PT Sans', 'Helvetica', sans-serif;
+    font-size: 16px;
 }
 
-/* Important page elements */
-body {
-    background-color: #ECF1F2;
-    font-family: 'Crimson Text', serif;
-    font-size: 1.75rem;
+/*         */
+/* Buttons */
+/*         */
+
+button.btn,
+button.btn:active,
+button.btn:focus,
+button.btn:hover {
+    color: #1C1C1C;
+    font-size: 1.3rem;
 }
-button { background-color: #CBDBE0; }
+button.btn:hover > span {
+    color: #1C1C1C;
+}
+
+/*        */
+/* Header */
+/*        */
+
 .header {
-    background-color: #CBDBE0;
+    background: url('../img/bg.png');
     color: #000000;
 }
 .logo {
     font-size: 6rem;
     text-align: center;
 }
-.footer {
-    background-color: #ECF1F2;
-    text-align: center;
-}
-input.menu-input {
-    margin-bottom: .8rem;
-    width: 12rem;
-}
 
-/* List controls */
-.add-task-button { display: inline-block; }
-.edit-task-button:focus { color: #CBDBE0 }
-.edit-task-button:hover { color: #ECF1F2 }
-.edit-task-dropdown-options {
-    left: auto;
-    right: 0;
-    width: 25rem;
-}
-.edit-task-dropdown-options span.label-active {
-    cursor: pointer;
-    opacity: .85;
-}
-.edit-task-dropdown-options span.label-active:hover { opacity: 1; }
-.edit-task-dropdown-options span.label-inactive {
-    cursor: pointer;
-    opacity: .5;
-}
-.edit-task-dropdown-options span.label-inactive:hover { opacity: .75; }
-.edit-task-dropdown-options ul {
-    text-align: right;
-    padding-right: 0.8rem;
-}
-.main-controls > input {
+/*             */
+/* Top content */
+/*             */
+.add-task-button {
     display: inline-block;
-    width: 24rem;
+}
+.help-tip {
+    font-size: 2.3rem;
+    margin-bottom: 2.3rem;
+    text-align: center;
+    width: 70%;
+    left: 15%;
 }
 .list-filters {
     display: inline-block;
 }
 .list-filters > input {
     display: inline-block;
-    width: 24rem;
+    width: 100%;
 }
-.list-group-item button { opacity: .78; }
-.list-group-item button:hover { opacity: 1; }
-.list-group-item label { cursor: pointer; display: inline; }
-.list-group-item input[type="checkbox"] {
-    height: auto;
-    width: auto;
-}
-.list-group-item .col-sm-8 { margin-bottom: 1.66rem; }
 .main-controls {
     padding-bottom: 1.5rem;
     text-align: center;
-    width: 400px;
+    width: 100%;
 }
-.task-controls { float: right; }
-.task-controls button { font-size: 1.35rem; }
-.task-timer { display: inline-block; }
-.task-name {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-    width: 50%;
-}
-.task-name-input {
-    display: inline-block;
-    height: 25px;
+.separator {
+    color: #999999;
+    margin: 0 0.4rem 0 0.4rem;
 }
 
+/*                        */
+/* Task settings dropdown */
+/*                        */
+input.menu-input {
+    margin-bottom: .8rem;
+    width: 100%;
+}
+.edit-task-dropdown-options {
+    left: auto;
+    right: 0;
+    max-width: 28rem;
+    width: 100%;
+}
+.edit-task-dropdown-options span.label-active,
+.edit-task-dropdown-options span.label-inactive {
+    margin: 0.1rem;
+}
+.edit-task-dropdown-options span.label-active {
+    cursor: pointer;
+    opacity: .85;
+}
+.edit-task-dropdown-options span.label-active:hover {
+    opacity: 1;
+}
+.edit-task-dropdown-options span.label-inactive {
+    cursor: pointer;
+    opacity: .5;
+}
+.edit-task-dropdown-options span.label-inactive:hover {
+    opacity: .75;
+}
+.edit-task-dropdown-options ul {
+    text-align: right;
+    padding-right: 0.8rem;
+}
+
+/*            */
+/* List items */
+/*            */
+
+.list-group {
+    margin-top: 1.4rem;
+}
+.list-group .list-group-item {
+    border-color: #FDF8D3;
+    min-height: 5.4rem;
+}
+.list-group-item button {
+    opacity: .78;
+}
+.list-group-item button:hover {
+    opacity: 1;
+}
+.list-group-item label {
+    cursor: pointer;
+    display: inline;
+}
+.list-group-item input[type="checkbox"] {
+    height: auto;
+}
+.list-group-item .col-sm-8 {
+    margin-bottom: 1.66rem;
+}
+.task-controls { float: right; }
+.task-controls button.btn:not(.btn-info):not(.btn-success):not(.btn-danger) {
+    background-color: #F0EDF0;
+}
+.task-controls button.btn {
+    -webkit-transition: background-color 50ms, border-bottom-width 100ms, margin-top 100ms;
+    -moz-transition: background-color 50ms, border-bottom-width 100ms, margin-top 100ms;
+    -o-transition: background-color 50ms, border-bottom-width 100ms, margin-top 100ms;
+    transition: background-color 50ms, border-bottom-width 100ms, margin-top 100ms;
+
+    border-bottom-color: #5BC0DE;
+    border-bottom-width: 4px;
+    border-radius: 8px;
+}
+.task-controls button.btn.btn-success,
+.task-controls button.btn.complete-task {
+    border-bottom-color: #519151;
+}
+.task-controls button.btn.btn-danger {
+    border-bottom-color: #c9302c;
+}
+.task-controls button.btn:active {
+    border-bottom-width: 0px;
+    margin-top: 4px;
+}
+.task-timer { display: inline-block; }
+.task-name {
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 30%;
+}
+.task-name-input {
+    -webkit-box-shadow: none !important;
+    border-width: 0;
+    border-color: transparent;
+    border-style: inset;
+    box-shadow: none !important;
+    display: inline-block;
+    font-size: 1.6rem;
+    height: 2.15rem;
+    margin: 0;
+    padding: 0;
+}
+
+/*        */
 /* Labels */
+/*        */
 .label-violet, .label-blue, .label-green, .label-yellow, .label-red {
     display: inline-block;
     border-radius: 50%;
+    margin: 0 0.05rem 0 0.05rem;
     height: 12px;
     width: 12px;
 }
@@ -141,11 +228,4 @@ input.menu-input {
     float: right;
     line-height: 3rem;
     padding-right: 1rem;
-}
-.help-tip > ul {
-    list-style-type: none;
-    padding: 0 0 20px 0;
-    margin: 0px;
-    font-size: 14px;
-    text-align: center;
 }

@@ -96,7 +96,7 @@
             ];
 
             timer.innerHTML = parts.join('<span class="color-two">:</span>') +
-                              '<span class="color-three medium-type">' +
+                              '<span class="color-three am-pm">' +
                               moment().format('a') +
                               '</span>';
         };
