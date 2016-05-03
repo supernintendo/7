@@ -8,7 +8,7 @@
 </pre>
 
 ## Overview
-This repository contains various small frontend web projects by [yours truly](http://matyi.net). While these projects were done on a whim and are not actively maintained, they might interest you if you're curious about my work.
+This repository contains various small frontend web projects. While these projects were done on a whim and are not actively maintained, they might interest you if you're curious about my work. - [Michael Matyi](http://matyi.net)
 
 You can quickly install dependencies for and build all projects using the `./setup_all.sh` script in the main directory.
 
@@ -29,7 +29,7 @@ Simply `npm install` and open `index.html` in your web browser.
 ## `/pixel`
 <img src="./pixel/screenshot.jpg" width="50%"></img>
 
-This is a pixel editor written in JavaScript with [React](https://github.com/facebook/react). Not as cool as [the work of jennmoneydollars](https://github.com/jennschiffer/make8bitart).
+This is a basic pixel editor written in JavaScript with [React](https://github.com/facebook/react).
 
 Just run `npm install` and `npm run build`, then open `index.html` in your web browser.
 
