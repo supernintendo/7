@@ -1,5 +1,5 @@
 html {
-    background: url('../img/bg.gif');
+    background: #110808;
     height: 100%;
     width: 100%;
     padding: 0;
@@ -10,7 +10,7 @@ html.invert {
     filter: invert(1);
 }
 body {
-    background: rgba(240, 240, 240, 0.97);
+    background: rgba(11, 8, 8, 0.97);
     height: 100%;
     width: 100%;
     padding: 0;
