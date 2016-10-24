@@ -1,7 +1,7 @@
 <pre>
 ███████╗
 ╚════██║
-    ██╔╝                a collecton of frontend web
+    ██╔╝                a collection of frontend web
    ██╔╝                  projects by Michael Matyi
    ██║  
    ╚═╝
@@ -15,7 +15,7 @@ You can quickly install dependencies for and build all projects using the `./set
 ## `/cart`
 <img src="./cart/screenshot.jpg" width="50%"></img>
 
-This is a simple storefront written in [TypeScript](https://github.com/Microsoft/TypeScript) that uses raw HTML for templates and depends on no external libraries. A [Sinatra](https://github.com/sinatra/sinatra) server allows catalogue data to be loaded from JSON.
+This is a simple storefront written in [TypeScript](https://github.com/Microsoft/TypeScript) that uses raw HTML for templates and depends on no external libraries.
 
 Make sure you have Ruby `2.1.2` installed and run the `build.sh` script in this directory. Then cd to the `server` directory and run `./server.rb`. The page can be viewed at [localhost:7772](http://localhost:7772).
 
