@@ -15,8 +15,8 @@ module.exports = (function() {
         ),
         activeColor = colors[0],
         mouseDown = false,
-        width = 16,
-        height = 16,
+        width = 24,
+        height = 24,
 
         // An individual cell on the pixel editor.
         Cell = React.createClass({
@@ -93,7 +93,7 @@ module.exports = (function() {
             },
             render: function() {
                 var i,
-                    buttonLabel = this.state.tripping ? "Return to normal" : "Trip";
+                    buttonLabel = this.state.tripping ? "Return to normal" : "Magic";
                     nodes = [];
 
                 for (i = 0; i < this.props.colors.length; i++) {
