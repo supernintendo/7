@@ -2,11 +2,11 @@
     var Waves = {
         attributes: {
             intervalLow: 10,
-            intervalHigh: 420,
-            xSpacingLow: 20,
-            xSpacingHigh: 140,
-            ySpacingLow: 20,
-            ySpacingHigh: 140,
+            intervalHigh: 50,
+            xSpacingLow: 100,
+            xSpacingHigh: 200,
+            ySpacingLow: 100,
+            ySpacingHigh: 200,
             template: document.querySelector('#wave-orb').innerHTML
         },
         // Place an orb.
