@@ -1,5 +1,5 @@
 /* Operation Cal*/var/*y: the leaders of the federation of */ Space /* co-signed */ = /* a */ document,
-        /* which described a new */ bloom /* for the continuation of the human species */ , 
+        /* which described a new */ bloom /* for the continuation of the human species */ ,
       /*  STAR DUST. With every */ vessel /* collecting it to endure */ = /* the */ window,
           // of time that is survival, this is truly survival of the fittest. As we blast,
     ҩ, /* and torpedo each other like we have always done before, we are eventually
@@ -8,14 +8,14 @@
                                                                             э = /* every THING is     i n f i n i t e... do the */ Math.
 
 
-                                //                                                                                         
+                                //
 
 
             /*  bits of the ... universe scattered at  */ random,
 
 
 
-                    Ѡ        
+                    Ѡ
 
 
 
@@ -69,13 +69,13 @@ console.log("%c                                                                 
 // .
 //
 
-    Ѻ = 
-// 
+    Ѻ =
+//
 // // // SHIP LOG (DECEMBER 11, 3288)
 // """
 /*      wow, my */ Math /* skills really do suck...
     thought I could land that ___
-    
+
         _.. from 7,777 ft. altitude but my ship just
     ended up sinking into the */ .floor;
 
@@ -85,7 +85,7 @@ console.log("%c                                                                 
         from my */ window /* .... going to investigate
 
     */ ;
-// 
+//
 
 ф = function() {
     return null;
@@ -160,27 +160,27 @@ console.log("%c                                                                 
             }, Ѯ(0100 + 0100) * 0100, Ѡ, function() {
                 this.remove();
             })
-    }    
+    }
 };
 
 /*
 
                                         ✨
-                                    ✨  
+                                    ✨
                                                                             */
                                     { '✨' };
 ҩ.ϴ        /* ✨ */       (' ✫ ⭐')  ;      /* ✨ */
- ҩ.ϴ          /* ✨ */  ('💢⭐☀︎✨✫')   ;    /*   ✨   */ 
-        ҩ.ϴ /* ✨ ⭐ */    ('  ☁️ 💢')   ;      /* ⭐        */ 
-ϰ.Δ    /* ✨ */             ('✫')       ;        /*   ✨     ⭐  */ 
+ ҩ.ϴ          /* ✨ */  ('💢⭐☀︎✨✫')   ;    /*   ✨   */
+        ҩ.ϴ /* ✨ ⭐ */    ('  ☁️ 💢')   ;      /* ⭐        */
+ϰ.Δ    /* ✨ */             ('✫')       ;        /*   ✨     ⭐  */
 
-                                             ҩ.ϴ        /* ✨ */       (' ☀︎')      ;    /*       ✨ ✨ */ 
-                                {     }     ;     {      } ; 
+                                             ҩ.ϴ        /* ✨ */       (' ☀︎')      ;    /*       ✨ ✨ */
+                                {     }     ;     {      } ;
     ҩ.ϴ          /* ✨ */  ('✨💢✨☁️')       ;    /*   /* ✨  */
-                        ϰ.Δ    /* ⭐ ✨ ✨ */  ('✨  ')    ;     /*    ⭐  */ 
-   ҩ.ϴ           /* ✨ */       ('✫✨☁️')     ;          /*   ✨ */ 
+                        ϰ.Δ    /* ⭐ ✨ ✨ */  ('✨  ')    ;     /*    ⭐  */
+   ҩ.ϴ           /* ✨ */       ('✫✨☁️')     ;          /*   ✨ */
 
-    ҩ.ϴ              /* ✨ */ ('✨💢 ✨')   ; /*  ✨  */ 
+    ҩ.ϴ              /* ✨ */ ('✨💢 ✨')   ; /*  ✨  */
                                 ҩ.ϴ                        ('✨             ')    ;
                     /* ✨ */      { '         ☁️        ' }       ; /*  ⭐ */
  ҩ.ϴ                   ('  ☁️     ✨    ✨       ')  ;
@@ -188,17 +188,17 @@ console.log("%c                                                                 
           ҩ.ϴ          /* ✨ */  ('✨💢✨☁️')       ;    /*   /* ✨  */
 
 
-                ϰ.Δ    /* ⭐ ✨ ✨ */  ('✨  ')    ;     /*    ⭐  */ 
-   ҩ.ϴ           /* ✨ */       ('✫✨☁️')     ;          /*   ✨ */ 
-ϰ.Δ    /* ✨ */             ('✫')       ;        /*   ✨     ⭐  */ 
+                ϰ.Δ    /* ⭐ ✨ ✨ */  ('✨  ')    ;     /*    ⭐  */
+   ҩ.ϴ           /* ✨ */       ('✫✨☁️')     ;          /*   ✨ */
+ϰ.Δ    /* ✨ */             ('✫')       ;        /*   ✨     ⭐  */
 
 
- ҩ.ϴ        /* ✨ */  (' ☀︎')  ; /*  ✨ ✨ */ 
-           {     }     ;     {      } ; 
+ ҩ.ϴ        /* ✨ */  (' ☀︎')  ; /*  ✨ ✨ */
+           {     }     ;     {      } ;
   ҩ.ϴ          /* ✨ */  ('✨💢✨☁️')       ;    /*   /* ✨  */
 
 /*
   ✨
-                                      
+
               ✨
                                                                   */
